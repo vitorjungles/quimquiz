@@ -4,17 +4,209 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QuimQuiz</title>
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="/styles/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    
+    <h1 align="center">QuímQuiz &#x1F9EA</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>Avisos 	&#x2757</h2>
+    <li>Cada questão vale 2 pontos, sendo assim, juntas totalizam um valor de 14 pontos</li>
+    <li>Responda todas às 7 questões antes de enviar as respostas</li>
+    <li>Marque somente <b>UMA</b> opção</li>
+    <li><span id="red1">*</span> Campo obrigatório</li>
+    <li>Boa sorte &#x1F340</li>
   </header>
   <main>
-
+    <section id="questions">
+      <div class="box">
+        <h1>1. Quem é o pai da tabela periódica?<span id="red2">*</span></h1>
+        <form>
+          <input name="question1" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question1" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question1" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question1" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+      <div class="box">
+        <h1>2. A tabela periódica foi criada por qual estudioso?<span id="red2">*</span></h1>
+        <form>
+          <input name="question2" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question2" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question2" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question2" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+      <div class="box">
+        <h1>3. A tabela periódica foi criada por qual estudioso?<span id="red2">*</span></h1>
+        <form>
+          <input name="question3" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question3" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question3" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question3" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+      <div class="box">
+        <h1>4. A tabela periódica foi criada por qual estudioso?<span id="red2">*</span></h1>
+        <form>
+          <input name="question4" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question4" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question4" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question4" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+      <div class="box">
+        <h1>5. A tabela periódica foi criada por qual estudioso?<span id="red2">*</span></h1>
+        <form>
+          <input name="question5" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question5" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question5" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question5" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+      <div class="box">
+        <h1>6. A tabela periódica foi criada por qual estudioso?<span id="red2">*</span></h1>
+        <form>
+          <input name="question6" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question6" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question6" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question6" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+      <div class="box">
+        <h1>7. A tabela periódica foi criada por qual estudioso?<span id="red2">*</span></h1>
+        <form>
+          <input name="question7" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question7" type="radio">
+          <label>Moseley</label>
+          <br>
+          <input name="question7" type="radio">
+          <label>Mendeleev</label>
+          <br>
+          <input name="question7" type="radio">
+          <label>Mendeleev</label>
+          <br>
+        </form>
+      </div>
+    </section>
+    <section id="final">
+      <h1 id="txt">Faltam questões a serem respondidas</h1>
+      <br>
+      <h1 id="txt2">Resultado: 0/14</h1>
+    </section>
+    <section id="button">
+      <input type="button" id="validate" value="Enviar resultados">
+    </section>
   </main>
   <footer>
-
+    <span id="date"></span> - Made with &lt3 by Vítor Jungles</span>
   </footer>
+  <script type="text/javascript">
+    var date = document.getElementById("date");
+    date.textContent = new Date().getFullYear();
+    var total=co=co2=0; v2=false;
+
+    var interval1 = setInterval(questions, 1000);
+
+    function questions() {
+      var v=true;
+      for (let c=1; c<8; c++) {
+        for (let i=0; i<4; i++) {
+          if (document.getElementsByName(`question${c}`).item(i).checked) {
+            co+=1;
+          };
+          if (i==3&&co==0) {
+            v=false;
+            break;
+          };
+        };
+        co=0;
+        if (v==false) {
+          break;
+        };
+      };
+      if (v) {
+        var OldText = document.getElementById("txt");
+        OldText.textContent = 'Todas as questões foram respondidas :)';
+        OldText.style.color = 'darkgreen';
+        v2=true;
+        clearInterval(interval1);
+      };
+      console.log(v, v2);
+    };
+    document.getElementById("validate").onclick = function() {
+      if (v2) {
+        var Old = document.getElementById("txt2");
+        Old.textContent = 'Analisando resultados';
+        var interval2 = setInterval(e, 1000);
+        function e() {
+          co2+=1;
+          console.log(co2);
+          if (co2==5) {
+            clearInterval(interval2);
+            Old.textContent = `Resultado: ${total}/14`;
+          } else {
+            Old.textContent += '.';
+          };
+        };
+      };
+    };
+  </script>
 </body>
 </html>
