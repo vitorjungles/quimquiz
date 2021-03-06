@@ -1,4 +1,4 @@
-<h1 align="center">QuimQuiz</h1>
+<h1 align="center">QuimQuiz &#x1F9EA</h1>
 
 ## O que é o QuimQuiz?
 O QuimQuiz é um website divertido e educativo onde se encontrarão perguntas relacionadas à matéria escolar de Química.
@@ -7,4 +7,4 @@ O QuimQuiz é um website divertido e educativo onde se encontrarão perguntas re
 O QuimQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totalizando assim 14 pontos sendo que de acordo com a nota final tirada o website se comportará de uma maneira diferente.
 
 ## Como acessar o QuimQuiz?
-Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://github.com/vitorjungles/quimquiz/tree/master/pages)
+Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://github.com/vitorjungles/quimquiz/tree/master/pages). Boa sorte à todos os participantes. :four_leaf_clover:
