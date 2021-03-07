@@ -7,4 +7,4 @@ O QuímQuiz é um website divertido e educativo onde se encontrarão perguntas r
 O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totalizando assim 14 pontos sendo que de acordo com a nota final tirada o website se comportará de uma maneira diferente.
 
 ## Como acessar o QuímQuiz?
-Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/pages/index.html). Boa sorte à todos os participantes. :four_leaf_clover:
+Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes. :four_leaf_clover:
