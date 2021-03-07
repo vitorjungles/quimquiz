@@ -1,4 +1,4 @@
-<h1 align="center">QuímQuiz &#x1F52C</h1>
+<h1 align="center">QuímQuiz</h1>
 
 ## O que é o QuímQuiz?
 O QuímQuiz é um website divertido e educativo onde se encontrarão perguntas relacionadas à matéria escolar de Química.
