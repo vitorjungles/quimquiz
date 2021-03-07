@@ -23,7 +23,7 @@ function questions() {
   };
   if (v) {
     var OldText = document.getElementById("txt");
-    OldText.textContent = 'Todas as questões foram respondidas :)';
+    OldText.textContent = 'Pronto para envio';
     OldText.style.color = 'darkgreen';
     v2=true;
     clearInterval(interval1);
@@ -33,7 +33,7 @@ function questions() {
 document.getElementById("validate").onclick = function() {
   if (v2) {
     var Old = document.getElementById("txt2");
-    Old.textContent = 'Analisando resultados';
+    Old.textContent = 'Analisando';
     var interval2 = setInterval(e, 1000);
     function e() {
       co2+=1;
