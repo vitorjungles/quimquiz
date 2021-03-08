@@ -39,41 +39,33 @@ document.getElementById("validate").onclick = function() {
       } else {
         for (let i=0; i<4; i++) {
           if (document.getElementsByName(`question${c+1}`).item(i).checked) {
-            array2.push([`Na questão ${c+1}, marcou item ${i} e a resposta era ${array[c]}.`])
-            console.log(array2)
+            array2.push([`Na questão ${c+1}, marcou item ${i} e a resposta era ${array[c]}.`]);
+            console.log(array2);
           };
         };
       };
     };
     var Old = document.getElementById("txt2");
+    Old.style.color = 'black';
     Old.textContent = 'Analisando';
     var Old2 = document.getElementById("txt3");
     var Old3 = document.getElementById("txt4");
-    var Old4 = document.getElementById("points");
-    var Old5 = document.getElementById("quiz");
     if (Old2.textContent!='') {
       Old2.textContent = '';
       Old3.textContent = '';
-      Old4.textContent = '';
-      Old5.textContent = '';
-    }
+    };
     var interval2 = setInterval(e, 1000);
     function e() {
       co2+=1;
-      console.log(co2);
       if (co2==5) {
         clearInterval(interval2);
-        Old.textContent = `Nota: /14 pontos.`;
-        Old2.textContent = `Acertos: /7 questões.`;
-        Old4.textContent = `${total}`;
-        Old5.textContent = `${7-array2.length}`;
+        Old.textContent = `Nota: ${total}/14 pontos.`;
+        Old2.textContent = `Acertos: ${7-array2.length}/7 questões.`;
         if (total>=8) {
-          Old4.style.color = 'blue';
-          Old5.style.color = 'blue';
+          Old.style.color = Old2.style.color = 'darkblue';
           Old3.textContent = '\uD83C\uDF8A\uD83C\uDF89 Parabéns!! \uD83C\uDF89\uD83C\uDF8A';
         } else {
-          Old4.style.color = 'red';
-          Old5.style.color = 'red';
+          Old.style.color = Old2.style.color = 'red';
           Old3.textContent = 'Não foi desta vez... :(';
         };
         total=co2=0;
