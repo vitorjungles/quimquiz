@@ -28,20 +28,56 @@ function questions() {
     v2=true;
     clearInterval(interval1);
   };
-  console.log(v, v2);
 };
 document.getElementById("validate").onclick = function() {
   if (v2) {
+    var array = [1, 1, 1, 1, 1, 1, 1]; array2 = [];
+    for (let c=0; c<array.length; c++) {
+      if (document.getElementsByName(`question${c+1}`).item(array[c]).checked) {
+        total+=2;
+        console.log(total, c, c+1);
+      } else {
+        for (let i=0; i<4; i++) {
+          if (document.getElementsByName(`question${c+1}`).item(i).checked) {
+            array2.push([`Na questão ${c+1}, marcou item ${i} e a resposta era ${array[c]}.`])
+            console.log(array2)
+          };
+        };
+      };
+    };
     var Old = document.getElementById("txt2");
     Old.textContent = 'Analisando';
+    var Old2 = document.getElementById("txt3");
+    var Old3 = document.getElementById("txt4");
+    var Old4 = document.getElementById("points");
+    var Old5 = document.getElementById("quiz");
+    if (Old2.textContent!='') {
+      Old2.textContent = '';
+      Old3.textContent = '';
+      Old4.textContent = '';
+      Old5.textContent = '';
+    }
     var interval2 = setInterval(e, 1000);
     function e() {
       co2+=1;
       console.log(co2);
       if (co2==5) {
         clearInterval(interval2);
-        co2=0;
-        Old.textContent = `Resultado: ${total}/14 pontos.`;
+        Old.textContent = `Nota: /14 pontos.`;
+        Old2.textContent = `Acertos: /7 questões.`;
+        Old4.textContent = `${total}`;
+        Old5.textContent = `${7-array2.length}`;
+        if (total>=8) {
+          Old4.style.color = 'blue';
+          Old5.style.color = 'blue';
+          Old3.textContent = '\uD83C\uDF8A\uD83C\uDF89 Parabéns!! \uD83C\uDF89\uD83C\uDF8A';
+        } else {
+          Old4.style.color = 'red';
+          Old5.style.color = 'red';
+          Old3.textContent = 'Não foi desta vez... :(';
+        };
+        total=co2=0;
+        array2=[];
       } else {
         Old.textContent += '.';
       };
