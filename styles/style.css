@@ -1,18 +1,20 @@
 /* Global ============================= */
 * {
   background-color: rgb(145, 216, 131);
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Header ============================= */
 header {
-  font-family: 'Poppins', sans-serif;
   text-align: center;
+}
+
+header h1 {
   margin-bottom: 12rem;
 }
 
 #red1 {
   color: red;
-  background: rgb(145, 216, 131);
 }
 
 /* Questions ============================= */
@@ -22,22 +24,19 @@ header {
 }
 
 #questions {
-  text-decoration: white;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
   margin-bottom: 6rem;
 }
 
 .box {
-  text-align: center;
   background: white;
   border-radius: 1.2rem;
   width: auto;
   height: auto;
+  margin-top: 10rem;
   padding: 1.4rem;
-  line-height: 40px;
-  font-family: 'Poppins', sans-serif;
+  line-height: 2rem;
 }
 
 .box p {
@@ -47,6 +46,7 @@ header {
 
 .box h1 {
   background: white;
+  font-size: larger;
   text-align: left;
 }
 
@@ -55,12 +55,13 @@ form {
   text-align: left;
 }
 
-input {
-  background: white;
+form input {
+  margin-top: 2rem;
 }
 
 label {
   background: white;
+  word-break: break-all;
 }
 
 /* Final ============================= */
@@ -68,7 +69,6 @@ label {
   text-align: center;
   margin-top: 1rem;
   margin-bottom: 10rem;
-  font-family: 'Poppins', sans-serif;
 }
 
 #final span {
@@ -77,9 +77,10 @@ label {
 }
 
 #validate {
+  background: white;
   border-radius: 2rem;
   width: 10rem;
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 4rem;
   font-weight: 600;
   padding: 1rem;
   opacity: 0.7;
@@ -89,17 +90,21 @@ label {
 
 #validate:hover {
   opacity: 1.2;
-  border-color: darkgreen;
+  border-color: black;
 }
 
 #txt {
   color: red;
   font-size: 1.4rem;
+  margin-bottom: 4rem;
+}
+
+#txt3 {
+  margin-bottom: 6rem;
 }
 
 /* Footer ============================= */
 footer {
   text-align: center;
-  font-family: 'Poppins', sans-serif;
   font-weight: 300;
 }
