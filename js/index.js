@@ -1,5 +1,3 @@
-
-
 // Exchanging year text
 var date = document.getElementById("date");
 date.textContent = new Date().getFullYear();
@@ -57,7 +55,7 @@ document.getElementById("validate").onclick = function() {
 
     // Exchanging texts and colors
     var Old = document.getElementById("txt2");
-    Old = exchange(Old, 'Analisando')
+    Old = exchange(Old, 'Analisando');
     var Old2 = document.getElementById("txt3");
     var Old3 = document.getElementById("txt4");
     var Old4 = document.getElementById("validate");
@@ -69,30 +67,8 @@ document.getElementById("validate").onclick = function() {
     var interval2 = setInterval(e, 1000);
 
     // Arrays
-    var array = [2, 0, 1, 1, 1, 1, 1]; array2 = []; array3 = []; array4 = [];
-
-    // Validation
-    for (let c=0; c<array.length; c++) {
-
-      // Verifying correct questions
-      if (document.getElementsByName(`question${c+1}`).item(array[c]).checked) {
-        count+=4;
-        total+=2;
-        array2.push(count-3);
-        console.log(total, c, c+1);
-        array3.push(1);
-      } else {
-        for (let i=0; i<4; i++) {
-          count+=1;
-
-          // Verifying wrong questions
-          if (document.getElementsByName(`question${c+1}`).item(i).checked) {
-            array3.push(0);
-            array4.push(count-1);
-          };
-        };
-      };
-    };
+    var correct = [2, 4, 9, 13, 17, 21, 25]; 
+    var wrong = [];
 
     // Shows final results
     function e() {
@@ -100,39 +76,35 @@ document.getElementById("validate").onclick = function() {
       if (co2==5) {
         clearInterval(interval2);
 
-        console.log(array2);
-        console.log(array3);
-        console.log(array4);
-
-        // Exchanging <label> text
-        for (let c=0; c<document.getElementsByTagName("label").length; c++) {
-          var text = document.getElementsByTagName("label").item(c);
-          if (array4.indexOf(c)!=-1) {
-            text = exchange(text, ' \u274C', 'red', true);
-          } else if (array2.indexOf(c)!=-1) {
-            text = exchange(text, ' \u2714\uFE0F', 'darkgreen', true);
+        // Validation and exchanging <label> text, <h1> color and <p> text and color
+        for (let c=0; c<document.getElementsByTagName("input").length-1; c++) {
+          var title=title;
+          var points=points;
+          if (c%4==0) {
+            count+=1;
+            title = document.getElementsByTagName("h1").item(count);
+            points = document.getElementById(`q${count}`);
           };
-        };
-        for (let c=0; c<array.length; c++) {
-          if (array3[c]=='0') {
-            var text2 = document.getElementsByTagName("label").item(c*4+(array[c]));
-            text2 = exchange(text2, ' \u2714\uFE0F', 'darkgreen', true);
+          var label = document.getElementsByTagName("label").item(c);
+          var input = document.getElementsByTagName("input").item(c);
+          if (correct.indexOf(c)!=-1) {
+            if (input.checked) {
+              total+=2;
+              title.style.color=points.style.color='darkgreen';
+              points.textContent='2/2';
+            };
+            label = exchange(label, ' \u2714\uFE0F', 'darkgreen', true);
+          } else if (input.checked) {
+            label = exchange(label, ' \u274C', 'red', true);
+            title.style.color=points.style.color='red';
+            points.textContent='0/2';
+            wrong.push(0);
           };
-        };
-
-        // Exchanging <p> text, <h1> color and <span> color
-        for (let c=0; c<array3.length; c++) {
-          var points = document.getElementById(`q${c+1}`);
-          var title = document.getElementsByTagName("h1").item(c+1);
-          var span = document.getElementsByTagName("span").item(c+1);
-          array3[c]==1 ? points = exchange(points, '2/2', 'darkgreen') : points = exchange(points, '0/2', 'red');
-          array3[c]==1 ? title.style.color = 'darkgreen' : title.style.color = 'red';
-          title.style.color=='darkgreen' ? span.style.color = 'red' : span = span;
         };
 
         // Texts of the final results
         Old.textContent = `Nota: ${total}/14 pontos.`;
-        Old2.textContent = `Acertos: ${array2.length}/7 questões.`;
+        Old2.textContent = `Acertos: ${7-wrong.length}/7 questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = 'red';
         total>=8 ? Old3.textContent = '\uD83C\uDF8A\uD83C\uDF89 Parabéns!! \uD83C\uDF89\uD83C\uDF8A' : Old3.textContent = 'Não foi desta vez... :(';
       } else {
