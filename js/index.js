@@ -88,12 +88,16 @@ document.getElementById("validate").onclick = function() {
           var label = document.getElementsByTagName("label").item(c);
           var input = document.getElementsByTagName("input").item(c);
           if (correct.indexOf(c)!=-1) {
+
+            // Verifying correct questions
             if (input.checked) {
               total+=2;
               title.style.color=points.style.color='darkgreen';
               points.textContent='2/2';
             };
             label = exchange(label, ' \u2714\uFE0F', 'darkgreen', true);
+
+            // Verifying wrong questions
           } else if (input.checked) {
             label = exchange(label, ' \u274C', 'red', true);
             title.style.color=points.style.color='red';
