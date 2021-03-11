@@ -67,7 +67,7 @@ document.getElementById("validate").onclick = function() {
     var interval2 = setInterval(e, 1000);
 
     // Arrays
-    var correct = [2, 4, 9, 13, 17, 21, 25]; 
+    var correct = [2, 4, 11, 13, 19, 22, 24]; 
     var wrong = [];
 
     // Shows final results
