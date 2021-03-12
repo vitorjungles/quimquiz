@@ -13,4 +13,4 @@ O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totaliz
 As tecnologias utilizadas nesse projeto são: HTML5, CSS3 e JavaScript.
 
 ## Como acessar o QuímQuiz?
-Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes. :four_leaf_clover:
+Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes.

@@ -7,9 +7,9 @@ var total=co=co2=count=0;
 var v2=v3=false;
 
 // Function to exchange texts and colors
-function exchange(variable, text, color='black', add=false) {
+function exchange(variable, text, color='black') {
   variable.style.color = color;
-  add ? variable.textContent += text : variable.textContent = text;
+  variable.textContent = text;
   return variable
 };
 
@@ -38,7 +38,7 @@ function questions() {
   // Exchanging permission text
   if (v) {
     var OldText = document.getElementById("txt");
-    OldText = exchange(OldText, 'Pronto para envio', 'darkgreen');
+    OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
     v2=true;
     clearInterval(interval1);
   };
@@ -92,15 +92,15 @@ document.getElementById("validate").onclick = function() {
             // Verifying correct questions
             if (input.checked) {
               total+=2;
-              title.style.color=points.style.color='darkgreen';
+              title.style.color='#1E8E3E';
               points.textContent='2/2';
             };
-            label = exchange(label, ' \u2714\uFE0F', 'darkgreen', true);
+            label.style.background='#E6F4EA';
 
             // Verifying wrong questions
           } else if (input.checked) {
-            label = exchange(label, ' \u274C', 'red', true);
-            title.style.color=points.style.color='red';
+            title.style.color='#D93025';
+            label.style.background = '#FCE8E6';
             points.textContent='0/2';
             wrong.push(0);
           };
@@ -109,8 +109,8 @@ document.getElementById("validate").onclick = function() {
         // Texts of the final results
         Old.textContent = `Nota: ${total}/14 pontos.`;
         Old2.textContent = `Acertos: ${7-wrong.length}/7 questões.`;
-        total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = 'red';
-        total>=8 ? Old3.textContent = '\uD83C\uDF8A\uD83C\uDF89 Parabéns!! \uD83C\uDF89\uD83C\uDF8A' : Old3.textContent = 'Não foi desta vez... :(';
+        total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
+        total>=8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
       } else {
         Old.textContent += '.';
       };
