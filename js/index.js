@@ -1,6 +1,5 @@
 // Exchanging year text
-var date = document.getElementById("date");
-date.textContent = new Date().getFullYear();
+document.getElementById("date").textContent = new Date().getFullYear();
 
 // Counting and validation variables
 var total=co=co2=count=0;
@@ -10,7 +9,7 @@ var v2=v3=false;
 function exchange(variable, text, color='black') {
   variable.style.color = color;
   variable.textContent = text;
-  return variable
+  return variable;
 };
 
 // First Interval
