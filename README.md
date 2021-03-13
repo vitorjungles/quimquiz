@@ -14,5 +14,8 @@ O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totaliz
 ## Quais tecnologias são usadas?
 As tecnologias utilizadas nesse projeto são: HTML5, CSS3 e JavaScript.
 
+## :pencil: Licença
+Este projeto está sob a licença MIT. Leia o aqrquivo [LICENSE](https://github.com/vitorjungles/quimquiz/blob/master/LICENSE) para mais informações.
+
 ## Como acessar o QuímQuiz?
 Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes. :four_leaf_clover:
