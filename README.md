@@ -1,5 +1,7 @@
 <h1 align="center">QuímQuiz</h1>
 
+<p align="center"><img src="images/screenshots/screenshot.png" width="1200" height="600"></p>
+
 ## O que é o QuímQuiz?
 O QuímQuiz é um website divertido e educativo onde se encontrarão perguntas relacionadas à matéria escolar de Química.
 
@@ -13,4 +15,4 @@ O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totaliz
 As tecnologias utilizadas nesse projeto são: HTML5, CSS3 e JavaScript.
 
 ## Como acessar o QuímQuiz?
-Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes.
+Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes. :four_leaf_clover:
