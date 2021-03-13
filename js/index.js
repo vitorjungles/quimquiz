@@ -66,8 +66,7 @@ document.getElementById("validate").onclick = function() {
     var interval2 = setInterval(e, 1000);
 
     // Arrays
-    var correct = [2, 4, 11, 13, 19, 22, 24]; 
-    var wrong = [];
+    var correct = [2, 4, 11, 13, 19, 22, 24];
 
     // Shows final results
     function e() {
@@ -101,13 +100,12 @@ document.getElementById("validate").onclick = function() {
             title.style.color='#D93025';
             label.style.background = '#FCE8E6';
             points.textContent='0/2';
-            wrong.push(0);
           };
         };
 
         // Texts of the final results
         Old.textContent = `Nota: ${total}/14 pontos.`;
-        Old2.textContent = `Acertos: ${7-wrong.length}/7 questões.`;
+        Old2.textContent = `Acertos: ${total/2}/7 questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
         total>=8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
       } else {
