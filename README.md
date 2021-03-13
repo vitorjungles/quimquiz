@@ -11,7 +11,7 @@ O objetivo desse projeto é aproximar os estudos de Química aos usuários por m
 ## Como funciona o QuímQuiz?
 O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totalizando assim 14 pontos sendo que de acordo com a nota final tirada o website se comportará de uma maneira diferente.
 
-## Quais tecnologias são usadas?
+## :computer: Quais tecnologias são usadas?
 As tecnologias utilizadas nesse projeto são: HTML5, CSS3 e JavaScript.
 
 ## :pencil: Licença
