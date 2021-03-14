@@ -27,8 +27,6 @@ header h1 {
 .box {
   background: white;
   border-radius: 1.2rem;
-  width: auto;
-  height: auto;
   margin-top: 10rem;
   padding: 1.4rem;
   line-height: 2rem;
