@@ -1,6 +1,6 @@
 /* Global ============================= */
 * {
-  background-color: rgb(145, 216, 131);
+  background: rgb(145, 216, 131);
   font-family: 'Poppins', sans-serif;
   text-align: center;
 }
@@ -56,31 +56,22 @@ label {
   background: white;
   word-break: break-word;
   border-radius: 0.4rem;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
+  padding: 0 0.4rem;
 }
 
 /* Final ============================= */
 #final {
-  margin-top: 1rem;
-  margin-bottom: 10rem;
-}
-
-#final span {
-  font-weight: 700;
-  font-size: x-large;
+  margin: 1rem 0 10rem;
 }
 
 #validate {
   background: white;
   border-radius: 2rem;
-  width: 10rem;
   margin-bottom: 4rem;
   font-weight: 600;
   padding: 1rem;
   opacity: 0.7;
-  border-style: solid;
-  border-width: 0.2rem;
+  border: 0.2rem solid gray;
 }
 
 #validate:hover {
