@@ -10,13 +10,12 @@ header h1 {
   margin-bottom: 12rem;
 }
 
-#red1 {
+#red1, #red2 {
   color: #D93025;
 }
 
 /* Questions ============================= */
-#red2 {
-  color: #D93025;
+#red2, .box, .box p, .box h1, form, label {
   background: white;
 }
 
@@ -25,7 +24,6 @@ header h1 {
 }
 
 .box {
-  background: white;
   border-radius: 1.2rem;
   margin-top: 10rem;
   padding: 1.4rem;
@@ -33,18 +31,15 @@ header h1 {
 }
 
 .box p {
-  background: white;
   text-align: right;
 }
 
 .box h1 {
-  background: white;
   font-size: larger;
   text-align: left;
 }
 
 form {
-  background: white;
   text-align: left;
 }
 
@@ -54,7 +49,6 @@ form input {
 }
 
 label {
-  background: white;
   word-break: break-word;
   border-radius: 0.4rem;
   padding: 0 0.4rem;
