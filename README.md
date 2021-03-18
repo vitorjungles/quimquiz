@@ -1,6 +1,6 @@
 <h1 align="center">QuímQuiz</h1>
 
-<p align="center"><img src="images/screenshots/screenshot.png" width="800" height="400"></p>
+<p align="center"><img src="images/screenshots/screenshot.png" width="800" height="450"></p>
 
 ## :pushpin: O que é o QuímQuiz?
 O QuímQuiz é um website divertido e educativo onde se encontrarão perguntas relacionadas à matéria escolar de Química.
