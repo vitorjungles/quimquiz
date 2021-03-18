@@ -60,7 +60,7 @@ document.getElementById("validate").onclick = function() {
     var Old4 = document.getElementById("validate");
     Old4.value = 'Reiniciar quiz';
     var Old5 = document.getElementById("txt");
-    Old5.textContent = '';
+    Old5.remove();
 
     // Second interval
     var interval2 = setInterval(e, 1000);
