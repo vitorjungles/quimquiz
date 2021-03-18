@@ -55,10 +55,9 @@ document.getElementById("validate").onclick = function() {
     v3=true;
 
     // Exchanging texts and colors
-    var Old = document.getElementById("txt2");
-    Old = exchange(Old, 'Analisando');
-    var Old2 = document.getElementById("txt3");
-    var Old3 = document.getElementById("txt4");
+    var Old = document.createElement("h1");
+    Old.textContent = 'Analisando';
+    document.querySelectorAll("input").item(document.querySelectorAll("input").length-1).after(Old);
     var Old4 = document.getElementById("validate");
     Old4.value = 'Reiniciar quiz';
     var Old5 = document.getElementById("txt");
@@ -106,10 +105,15 @@ document.getElementById("validate").onclick = function() {
         };
 
         // Texts of the final results
+        var Old2 = document.createElement("h1");
+        Old2.id = "txt3";
+        var Old3 = document.createElement("h1");
         Old.textContent = `Nota: ${total}/14 pontos.`;
         Old2.textContent = `Acertos: ${total/2}/7 questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
         total>=8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
+        document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length-1).after(Old2);
+        document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length-1).after(Old3);
       } else {
         Old.textContent += '.';
       };
