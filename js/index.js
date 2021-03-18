@@ -1,5 +1,7 @@
-// Exchanging year text
-document.getElementById("date").textContent = new Date().getFullYear();
+// Exchanging year
+var year = document.createElement("span");
+year.textContent = ` ${new Date().getFullYear()}`;
+document.getElementById("copyright").after(year);
 
 // Counting and validation variables
 var total=co=co2=count=0;
