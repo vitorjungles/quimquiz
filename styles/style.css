@@ -10,12 +10,12 @@ header h1 {
   margin-bottom: 12rem;
 }
 
-#red1, #red2 {
+#red1, #red2, #txt {
   color: #D93025;
 }
 
 /* Questions ============================= */
-#red2, .box, .box p, .box h1, form, label {
+#red2, #validate, .box, .box p, .box h1, form, label {
   background: white;
 }
 
@@ -24,9 +24,9 @@ header h1 {
 }
 
 .box {
-  border-radius: 1.2rem;
+  border-radius: 1rem;
   margin-top: 10rem;
-  padding: 1.4rem;
+  padding: 1rem;
   line-height: 2rem;
 }
 
@@ -60,7 +60,6 @@ label {
 }
 
 #validate {
-  background: white;
   border-radius: 2rem;
   margin-bottom: 4rem;
   font-weight: 600;
@@ -80,7 +79,6 @@ label {
 }
 
 #txt {
-  color: #D93025;
   font-size: 1.4rem;
   margin-bottom: 4rem;
 }
