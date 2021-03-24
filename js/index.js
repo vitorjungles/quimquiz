@@ -4,13 +4,12 @@ year.textContent = ` ${new Date().getFullYear()}`;
 document.getElementById("copyright").after(year);
 
 // Counting and validation variables
-var total=co=co2=count=0;
-var v2=v3=false;
+var total=co=co2=count=0, v2=v3=false;
 
 // Function to exchange texts and colors
 function exchange(variable, text, color='black') {
-  variable.style.color = color;
-  variable.textContent = text;
+  variable.style.color=color;
+  variable.textContent=text;
   return variable;
 };
 
@@ -77,15 +76,13 @@ document.getElementById("validate").onclick = function() {
 
         // Validation and exchanging <label> text, <h1> color and <p> text and color
         for (let c=0; c<document.getElementsByTagName("input").length-1; c++) {
-          var title=title;
-          var points=points;
+          var title=title, points=points;
           if (c%4==0) {
             count+=1;
             title = document.getElementsByTagName("h1").item(count);
             points = document.getElementById(`q${count}`);
           };
-          var label = document.getElementsByTagName("label").item(c);
-          var input = document.getElementsByTagName("input").item(c);
+          var label = document.getElementsByTagName("label").item(c), input = document.getElementsByTagName("input").item(c);
           if (correct.indexOf(c)!=-1) {
 
             // Verifying correct questions
@@ -105,9 +102,8 @@ document.getElementById("validate").onclick = function() {
         };
 
         // Texts of the final results
-        var Old2 = document.createElement("h1");
+        var Old2 = document.createElement("h1"), Old3 = document.createElement("h1");
         Old2.id = "txt3";
-        var Old3 = document.createElement("h1");
         Old.textContent = `Nota: ${total}/14 pontos.`;
         Old2.textContent = `Acertos: ${total/2}/7 questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
