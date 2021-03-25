@@ -1,7 +1,7 @@
 // Exchanging year
 var year = document.createElement("span");
 year.textContent = ` ${new Date().getFullYear()}`;
-document.getElementById("copyright").after(year);
+document.querySelector("#copyright").after(year);
 
 // Counting and validation variables
 var total=co=co2=count=0, v2=v3=false;
@@ -21,7 +21,7 @@ function questions() {
   var v=true;
   for (let c=1; c<8; c++) {
     for (let i=0; i<4; i++) {
-      if (document.getElementsByName(`question${c}`).item(i).checked) {
+      if (document.querySelectorAll(`input[name='question${c}'`).item(i).checked) {
         co+=1;
       };
       if (i==3&&co==0) {
@@ -37,7 +37,7 @@ function questions() {
 
   // Exchanging permission text
   if (v) {
-    var OldText = document.getElementById("txt");
+    var OldText = document.querySelector("#txt");
     OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
     v2=true;
     clearInterval(interval1);
@@ -45,7 +45,7 @@ function questions() {
 };
 
 // Button click function
-document.getElementById("validate").onclick = function() {
+document.querySelector("#validate").addEventListener('click', function() {
 
   // Reload page conditional
   if (v2&&v3) {
@@ -57,9 +57,9 @@ document.getElementById("validate").onclick = function() {
     var Old = document.createElement("h1");
     Old.textContent = 'Analisando';
     document.querySelectorAll("input").item(document.querySelectorAll("input").length-1).after(Old);
-    var Old4 = document.getElementById("validate");
+    var Old4 = document.querySelector("#validate");
     Old4.value = 'Reiniciar quiz';
-    var Old5 = document.getElementById("txt");
+    var Old5 = document.querySelector("#txt");
     Old5.remove();
 
     // Second interval
@@ -75,14 +75,14 @@ document.getElementById("validate").onclick = function() {
         clearInterval(interval2);
 
         // Validation and exchanging <label> text, <h1> color and <p> text and color
-        for (let c=0; c<document.getElementsByTagName("input").length-1; c++) {
+        for (let c=0; c<document.querySelectorAll("input").length-1; c++) {
           var title=title, points=points;
           if (c%4==0) {
             count+=1;
-            title = document.getElementsByTagName("h1").item(count);
-            points = document.getElementById(`q${count}`);
+            title = document.querySelectorAll("h1").item(count);
+            points = document.querySelector(`#q${count}`);
           };
-          var label = document.getElementsByTagName("label").item(c), input = document.getElementsByTagName("input").item(c);
+          var label = document.querySelectorAll("label").item(c), input = document.querySelectorAll("input").item(c);
           if (correct.indexOf(c)!=-1) {
 
             // Verifying correct questions
@@ -115,4 +115,4 @@ document.getElementById("validate").onclick = function() {
       };
     };
   };
-};
+});
