@@ -1,23 +1,18 @@
-// Exchanging year
 var year = document.createElement("span");
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
-// Counting and validation variables
 var total=co=co2=count=0, v2=v3=false;
 
-// Function to exchange texts and colors
 function exchange(variable, text, color='black') {
   variable.style.color=color;
   variable.textContent=text;
   return variable;
 };
 
-// First Interval
-var interval1 = setInterval(questions, 1000);
+var FirstInterval = setInterval(Permission, 1000);
 
-// Analysis of unanswered questions
-function questions() {
+function Permission() {
   var v=true;
   for (let c=1; c<8; c++) {
     for (let i=0; i<4; i++) {
@@ -35,57 +30,45 @@ function questions() {
     };
   };
 
-  // Exchanging permission text
   if (v) {
     var OldText = document.querySelector("#txt");
     OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
     v2=true;
-    clearInterval(interval1);
+    clearInterval(FirstInterval);
   };
 };
 
-// Button click function
 document.querySelector("#validate").addEventListener('click', function() {
-
-  // Reload page conditional
   if (v2&&v3) {
     location.reload();
   } else if (v2&&v3==false) {
     v3=true;
 
-    // Exchanging texts and colors
-    var Old = document.createElement("h1");
+    var Old = document.createElement("h1"), Old4 = document.querySelector("#validate"), Old5 = document.querySelector("#txt");
     Old.textContent = 'Analisando';
     document.querySelectorAll("input").item(document.querySelectorAll("input").length-1).after(Old);
-    var Old4 = document.querySelector("#validate");
     Old4.value = 'Reiniciar quiz';
-    var Old5 = document.querySelector("#txt");
     Old5.remove();
 
-    // Second interval
-    var interval2 = setInterval(e, 1000);
+    var SecondInterval = setInterval(Validation, 1000);
 
-    // Arrays
-    var correct = [2, 4, 11, 13, 19, 22, 24];
+    var CorrectQuestions = [2, 4, 11, 13, 19, 22, 24];
 
-    // Shows final results
-    function e() {
+    function Validation() {
       co2+=1;
       if (co2==5) {
-        clearInterval(interval2);
+        clearInterval(SecondInterval);
 
-        // Validation and exchanging <label> text, <h1> color and <p> text and color
         for (let c=0; c<document.querySelectorAll("input").length-1; c++) {
-          var title=title, points=points;
+          var title=title, points=points, label = document.querySelectorAll("label").item(c), input = document.querySelectorAll("input").item(c);
+
           if (c%4==0) {
             count+=1;
             title = document.querySelectorAll("h1").item(count);
             points = document.querySelector(`#q${count}`);
           };
-          var label = document.querySelectorAll("label").item(c), input = document.querySelectorAll("input").item(c);
-          if (correct.indexOf(c)!=-1) {
 
-            // Verifying correct questions
+          if (CorrectQuestions.indexOf(c)!=-1) {
             if (input.checked) {
               total+=2;
               title.style.color='#1E8E3E';
@@ -93,7 +76,6 @@ document.querySelector("#validate").addEventListener('click', function() {
             };
             label.style.background='#E6F4EA';
 
-            // Verifying wrong questions
           } else if (input.checked) {
             title.style.color='#D93025';
             label.style.background = '#FCE8E6';
@@ -101,7 +83,6 @@ document.querySelector("#validate").addEventListener('click', function() {
           };
         };
 
-        // Texts of the final results
         var Old2 = document.createElement("h1"), Old3 = document.createElement("h1");
         Old2.id = "txt3";
         Old.textContent = `Nota: ${total}/14 pontos.`;

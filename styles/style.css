@@ -1,11 +1,9 @@
-/* Global ============================= */
 * {
   background: rgb(145, 216, 131);
   font-family: 'Poppins', sans-serif;
   text-align: center;
 }
 
-/* Header ============================= */
 header h1 {
   margin-bottom: 12rem;
 }
@@ -14,7 +12,6 @@ header h1 {
   color: #D93025;
 }
 
-/* Questions ============================= */
 #red2, #validate, .box, .box p, .box h1, form, label {
   background: white;
 }
@@ -54,7 +51,6 @@ label {
   padding: 0 0.4rem;
 }
 
-/* Final ============================= */
 #final {
   margin: 1rem 0 10rem;
 }
@@ -87,7 +83,6 @@ label {
   margin-bottom: 6rem;
 }
 
-/* Footer ============================= */
 footer {
   font-weight: 300;
 }
