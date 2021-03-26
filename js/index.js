@@ -2,15 +2,15 @@ var year = document.createElement("span");
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
-var total=co=co2=count=0, v2=v3=false;
+var total=co=count=0, SecondCheck=ThirdCheck=false;
+
+var FirstInterval = setInterval(Permission, 1000);
 
 function exchange(variable, text, color='black') {
   variable.style.color=color;
   variable.textContent=text;
   return variable;
 };
-
-var FirstInterval = setInterval(Permission, 1000);
 
 function Permission() {
   var v=true;
@@ -33,16 +33,16 @@ function Permission() {
   if (v) {
     var OldText = document.querySelector("#txt");
     OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
-    v2=true;
+    SecondCheck=true;
     clearInterval(FirstInterval);
   };
 };
 
 document.querySelector("#validate").addEventListener('click', function() {
-  if (v2&&v3) {
+  if (SecondCheck&&ThirdCheck) {
     location.reload();
-  } else if (v2&&v3==false) {
-    v3=true;
+  } else if (SecondCheck&&ThirdCheck==false) {
+    ThirdCheck=true;
 
     var Old = document.createElement("h1"), Old4 = document.querySelector("#validate"), Old5 = document.querySelector("#txt");
     Old.textContent = 'Analisando';
@@ -55,8 +55,8 @@ document.querySelector("#validate").addEventListener('click', function() {
     var CorrectQuestions = [2, 4, 11, 13, 19, 22, 24];
 
     function Validation() {
-      co2+=1;
-      if (co2==5) {
+      co+=1;
+      if (co==5) {
         clearInterval(SecondInterval);
 
         for (let c=0; c<document.querySelectorAll("input").length-1; c++) {
