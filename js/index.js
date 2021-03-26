@@ -84,6 +84,7 @@ document.querySelector("#validate").addEventListener('click', function() {
         };
 
         var Old2 = document.createElement("h1"), Old3 = document.createElement("h1");
+        Old2.id = 'txt3';
         Old.textContent = `Nota: ${total}/14 pontos.`;
         Old2.textContent = `Acertos: ${total/2}/7 questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
