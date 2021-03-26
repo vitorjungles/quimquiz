@@ -84,13 +84,11 @@ document.querySelector("#validate").addEventListener('click', function() {
         };
 
         var Old2 = document.createElement("h1"), Old3 = document.createElement("h1");
-        Old2.id = "txt3";
         Old.textContent = `Nota: ${total}/14 pontos.`;
         Old2.textContent = `Acertos: ${total/2}/7 questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
         total>=8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
-        document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length-1).after(Old2);
-        document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length-1).after(Old3);
+        [Old2, Old3].forEach(function(array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length-1).after(array) });
       } else {
         Old.textContent += '.';
       };
