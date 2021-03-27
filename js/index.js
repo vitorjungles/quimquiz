@@ -39,7 +39,7 @@ function Permission() {
 };
 
 document.querySelector("#validate").addEventListener('click', function Quiz() {
-  document.querySelector('#validate').addEventListener('click', Quiz, { once:true });
+  document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
   if (SecondCheck&&ThirdCheck) {
     location.reload();
   } else if (SecondCheck&&ThirdCheck==false) {
