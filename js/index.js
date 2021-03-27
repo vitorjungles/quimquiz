@@ -38,7 +38,8 @@ function Permission() {
   };
 };
 
-document.querySelector("#validate").addEventListener('click', function() {
+document.querySelector("#validate").addEventListener('click', function Quiz() {
+  document.querySelector('#validate').addEventListener('click', Quiz, { once:true });
   if (SecondCheck&&ThirdCheck) {
     location.reload();
   } else if (SecondCheck&&ThirdCheck==false) {
@@ -95,4 +96,4 @@ document.querySelector("#validate").addEventListener('click', function() {
       };
     };
   };
-});
+}, { once: true });
