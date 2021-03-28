@@ -2,7 +2,7 @@ var year = document.createElement("span");
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
-var total=co=count=0, SecondCheck=ThirdCheck=false;
+var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
 
 var FirstInterval = setInterval(Permission, 1000);
 
@@ -86,8 +86,8 @@ document.querySelector("#validate").addEventListener('click', function Quiz() {
 
         var Old2 = document.createElement("h1"), Old3 = document.createElement("h1");
         Old2.id = 'txt3';
-        Old.textContent = `Nota: ${total}/14 pontos.`;
-        Old2.textContent = `Acertos: ${total/2}/7 questões.`;
+        Old.textContent = `Nota: ${total}/${CorrectQuestions.length*2} pontos.`;
+        Old2.textContent = `Acertos: ${total/2}/${CorrectQuestions.length} questões.`;
         total>=8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
         total>=8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
         [Old2, Old3].forEach(function(array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length-1).after(array) });
