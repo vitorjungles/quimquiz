@@ -4,7 +4,15 @@ document.querySelector("#copyright").after(year);
 
 var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
 
-var FirstInterval = setInterval(Permission, 1000);
+function InputLoop(add = true) {
+  for (let c = 1; c < 8; c++) {
+    for (let i = 0; i < 4; i++) {
+      add ? document.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : document.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
+    };
+  };
+};
+
+InputLoop();
 
 function exchange(variable, text, color = 'black') {
   variable.style.color = color;
@@ -34,7 +42,7 @@ function Permission() {
     var OldText = document.querySelector("#txt");
     OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
     SecondCheck = true;
-    clearInterval(FirstInterval);
+    InputLoop(false);
   };
 };
 
@@ -54,14 +62,14 @@ document.querySelector("#validate").addEventListener('click', function Quiz() {
     Old4.value = 'Reiniciar quiz';
     Old5.remove();
 
-    var SecondInterval = setInterval(Validation, 1000);
+    var Interval = setInterval(Validation, 1000);
 
     var CorrectQuestions = [2, 4, 11, 13, 19, 22, 24];
 
     function Validation() {
       co += 1;
       if (co == 5) {
-        clearInterval(SecondInterval);
+        clearInterval(Interval);
 
         for (let c = 0; c < document.querySelectorAll("input").length - 1; c++) {
           var title = title;
