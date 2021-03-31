@@ -90,3 +90,7 @@ footer {
 a {
   color: black;
 }
+
+a:hover, a:focus {
+  color: blue;
+}
