@@ -1,6 +1,7 @@
 * {
   background: rgb(145, 216, 131);
   font-family: 'Poppins', sans-serif;
+  color: black;
   text-align: center;
 }
 
@@ -87,10 +88,6 @@ label {
 
 footer {
   font-weight: 300;
-}
-
-a {
-  color: black;
 }
 
 a:hover, a:focus {
