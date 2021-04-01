@@ -42,6 +42,9 @@ form {
 
 form input {
   margin-top: 2rem;
+}
+
+form input, label {
   cursor: pointer;
 }
 
@@ -93,4 +96,14 @@ a {
 
 a:hover, a:focus {
   color: blue;
+}
+
+@media screen and (max-width: 600px) and (max-height: 1000px) {
+  .box h1 {
+    text-align: justify;
+  }
+
+  label {
+    text-align: justify;
+  }
 }
