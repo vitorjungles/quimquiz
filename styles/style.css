@@ -31,21 +31,20 @@ header h1 {
   text-align: right;
 }
 
+.box h1, form {
+  text-align: justify;
+}
+
 .box h1 {
   font-size: large;
-  text-align: left;
-}
-
-form {
-  text-align: left;
-}
-
-form input {
-  margin-top: 2rem;
 }
 
 form input, label {
   cursor: pointer;
+}
+
+form input {
+  margin-top: 2rem;
 }
 
 label {
@@ -96,14 +95,4 @@ a {
 
 a:hover, a:focus {
   color: blue;
-}
-
-@media screen and (max-width: 600px) and (max-height: 1000px) {
-  .box h1 {
-    text-align: justify;
-  }
-
-  label {
-    text-align: justify;
-  }
 }
