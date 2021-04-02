@@ -2,16 +2,75 @@ var year = document.createElement("span");
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
-var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
+var request = new XMLHttpRequest();
+request.open('GET', "../json/data.json")
 
-for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
-  document.querySelectorAll("p").item(c - 1).id = `q${c}`;
-  for (let i = 1; i < 5; i++) {
-    document.querySelectorAll("form").item(c - 1).querySelectorAll("input").item(i - 1).name = `question${c}`;
-    document.querySelectorAll(`input[name='question${c}']`).item(i - 1).id = `q${c}-${i}`;
-    document.querySelectorAll("form").item(c - 1).querySelectorAll("label").item(i - 1).htmlFor = `q${c}-${i}`;
+request.responseType = 'json';
+request.send();
+
+request.onload = function () {
+  var Questions = request.response;
+
+  var Header = document.createElement("header");
+  var H1 = document.createElement("h1")
+  var TitlePage = document.createElement("title");
+  var Section = document.createElement("section");
+
+  Section.id = 'questions';
+
+  TitlePage.textContent = H1.textContent = Questions["quiz"]["title"];
+
+  Header.append(H1);
+
+  document.querySelector("body").firstChild.before(Header);
+  document.querySelector("meta[name='viewport']").after(TitlePage);
+
+  for (let FirstKey in Questions["quiz"]["questions"]) {
+    var Div = document.createElement("div");
+    var Title = document.createElement("h1");
+    var Span = document.createElement("span");
+    var Form = document.createElement("form");
+    var P = document.createElement("p");
+
+    Span.id = "red2";
+    Span.textContent = "*";
+    
+    Title.textContent = Questions["quiz"]["questions"][FirstKey]["title"];
+    Title.firstChild.after(Span);
+
+    Div.append(Title);
+    Div.classList = "box";
+
+    for (let SecondKey in Questions["quiz"]["questions"][FirstKey]["alternatives"]) {
+      var Label = document.createElement("label");
+      var Input = document.createElement("input");
+      var Br = document.createElement("br");
+      
+      Input.type = "radio";
+      Input.name = FirstKey;
+      Input.id = `q${FirstKey.substring(FirstKey.length - 1, FirstKey.length)}-${SecondKey}`;
+
+      Label.textContent = Questions["quiz"]["questions"][FirstKey]["alternatives"][SecondKey];
+      Label.htmlFor = `q${FirstKey.substring(FirstKey.length - 1, FirstKey.length)}-${SecondKey}`;
+
+      Form.append(Input);
+      Form.append(Label);
+      if (Questions["quiz"]["questions"][FirstKey]["alternatives"][parseInt(SecondKey) + 1 + ''] != undefined) { 
+        Form.append(Br);
+      };
+    };
+    P.textContent = Questions["quiz"]["questions"][FirstKey]["value"] + " pontos";
+
+    Div.append(Form);
+    Div.append(P);
+    
+    Section.append(Div);
   };
+  var Main = document.querySelector("main");
+  Main.firstChild.before(Section)
 };
+
+var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
 
 function InputLoop(add = true) {
   for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
