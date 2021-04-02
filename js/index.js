@@ -5,7 +5,9 @@ document.querySelector("#copyright").after(year);
 var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
 
 for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
+  document.querySelectorAll("p").item(c - 1).id = `q${c}`;
   for (let i = 1; i < 5; i++) {
+    document.querySelectorAll("form").item(c - 1).querySelectorAll("input").item(i - 1).name = `question${c}`;
     document.querySelectorAll(`input[name='question${c}']`).item(i - 1).id = `q${c}-${i}`;
     document.querySelectorAll("form").item(c - 1).querySelectorAll("label").item(i - 1).htmlFor = `q${c}-${i}`;
   };
