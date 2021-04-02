@@ -3,7 +3,7 @@ year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
 var request = new XMLHttpRequest();
-request.open('GET', "https://vitorjungles.github.io/json/data.json")
+request.open('GET', "./json/data.json")
 
 request.responseType = 'json';
 request.send();
