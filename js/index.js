@@ -59,6 +59,7 @@ request.onload = function () {
         Form.append(Br);
       };
     };
+    P.id = `q${FirstKey.substring(FirstKey.length - 1, FirstKey.length)}`
     P.textContent = Questions["quiz"]["questions"][FirstKey]["value"] + " pontos";
 
     Div.append(Form);
@@ -68,50 +69,50 @@ request.onload = function () {
   };
   var Main = document.querySelector("main");
   Main.firstChild.before(Section)
-};
 
-var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
+  function InputLoop(add = true) {
+    for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
+      for (let i = 0; i < 4; i++) {
+        add ? document.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : document.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
+      };
+    };
+  };
+  
+  InputLoop();
 
-function InputLoop(add = true) {
-  for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
-    for (let i = 0; i < 4; i++) {
-      add ? document.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : document.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
+  function Permission() {
+    var v = true;
+    for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
+      for (let i = 0; i < 4; i++) {
+        if (document.querySelectorAll(`input[name='question${c}'`).item(i).checked) {
+          co += 1;
+        };
+        if (i == 3 && co == 0) {
+          v = false;
+          break;
+        };
+      };
+      co = 0;
+      if (v == false) {
+        break;
+      };
+    };
+  
+    if (v) {
+      var OldText = document.querySelector("#txt");
+      OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
+      SecondCheck = true;
+      InputLoop(false);
     };
   };
 };
 
-InputLoop();
+var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
 
 function exchange(variable, text, color = 'black') {
   variable.style.color = color;
   variable.textContent = text;
   return variable;
-};
-
-function Permission() {
-  var v = true;
-  for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
-    for (let i = 0; i < 4; i++) {
-      if (document.querySelectorAll(`input[name='question${c}'`).item(i).checked) {
-        co += 1;
-      };
-      if (i == 3 && co == 0) {
-        v = false;
-        break;
-      };
-    };
-    co = 0;
-    if (v == false) {
-      break;
-    };
-  };
-
-  if (v) {
-    var OldText = document.querySelector("#txt");
-    OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
-    SecondCheck = true;
-    InputLoop(false);
-  };
 };
 
 document.querySelector("#validate").addEventListener('click', function Quiz() {
