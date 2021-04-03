@@ -49,7 +49,7 @@ header h1 {
   font-size: large;
 }
 
-form input, label {
+form input {
   cursor: pointer;
 }
 
@@ -98,6 +98,10 @@ label {
 
 footer {
   font-weight: 300;
+}
+
+a {
+  transform: scale(1.03);
 }
 
 a:hover, a:focus {
