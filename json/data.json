@@ -5,71 +5,78 @@
       "question1": {
         "title": "Sabendo que a Tabela periódica atual contém as Famílias A (elementos representativos) e as Famílias B (elementos de transição), marque a alternativa que há somente elementos de transição:",
         "alternatives": {
-          "1": "Li, Ag, B, Ar.",
-          "2": "Hg, Re, Ir, Ra.",
-          "3": "Ti, Pd, Zn, Au.",
-          "4": "C, O, N, F."
+          "0": "Li, Ag, B, Ar.",
+          "1": "Hg, Re, Ir, Ra.",
+          "2": "Ti, Pd, Zn, Au.",
+          "3": "C, O, N, F."
         },
+        "correct": 2,
         "value": 2
       },
       "question2": {
         "title": "O período da Tabela Periódica a qual um elemento químico pertence é igual ao seu:",
         "alternatives": {
-          "1": "número de camadas eletrônicas.",
-          "2": "número de prótons.",
-          "3": "número de elétrons.",
-          "4": "número atômico."
+          "0": "número de camadas eletrônicas.",
+          "1": "número de prótons.",
+          "2": "número de elétrons.",
+          "3": "número atômico."
         },
+        "correct": 0,
         "value": 2
       },
       "question3": {
         "title": "Dado o elemento químico Ni com número atômico igual a 28, marque a alternativa que contém a sua posição correta:",
         "alternatives": {
-          "1": "2° Período e Família IIIA.",
-          "2": "5° Período e Família VB.",
-          "3": "7° Período e Família IA.",
-          "4": "4° Período e Família VIIIB."
+          "0": "2° Período e Família IIIA.",
+          "1": "5° Período e Família VB.",
+          "2": "7° Período e Família IA.",
+          "3": "4° Período e Família VIIIB."
         },
+        "correct": 3,
         "value": 2
       },
       "question4": {
         "title": "Com base nos conceitos da eletronegatividade, pode-se afirmar que na Tabela Periódica, ela:",
         "alternatives": {
-          "1": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de baixo para cima.",
-          "2": "aumenta nos períodos da esquerda para a direita e aumenta nos grupos de baixo para cima.",
-          "3": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de cima para baixo.",
-          "4": "aumenta nos períodos da esquerda para a direita e aumenta nos grupos de cima para baixo."
+          "0": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de baixo para cima.",
+          "1": "aumenta nos períodos da esquerda para a direita e aumenta nos grupos de baixo para cima.",
+          "2": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de cima para baixo.",
+          "3": "aumenta nos períodos da esquerda para a direita e aumenta nos grupos de cima para baixo."
         },
+        "correct": 1,
         "value": 2
       },
       "question5": {
         "title": "Dos elementos químicos abaixo, qual não faz parte de nenhuma família:",
         "alternatives": {
-          "1": "Po.",
-          "2": "Ne.",
-          "3": "Cu.",
-          "4": "H."
+          "0": "Po.",
+          "1": "Ne.",
+          "2": "Cu.",
+          "3": "H."
         },
+        "correct": 3,
         "value": 2
       },
       "question6": {
         "title": "Marque a alternativa que há somente gases nobres:",
         "alternatives": {
-          "1": "Fe, Nb, Ne, Ar.",
-          "2": "Ga, Os, S, P.",
-          "3": "Rn, Xe, Kr, He.",
-          "4": "Pb, Cs, U, Mn."
+          "0": "Fe, Nb, Ne, Ar.",
+          "1": "Ga, Os, S, P.",
+          "2": "Rn, Xe, Kr, He.",
+          "3": "Pb, Cs, U, Mn."
         },
+        "correct": 2,
         "value": 2
       },
       "question7": {
         "title": "Em relação ao raio atômico de um átomo, assinale a resposta mais adequada:",
         "alternatives": {
-          "1": "Raio do Cátion < Raio do átomo neutro < Raio do Ânion.",
-          "2": "Raio do átomo neutro < Raio do Cátion < Raio do Ânion.",
-          "3": "Raio do Cátion < Raio do Ânion < Raio do átomo neutro.",
-          "4": "Raio do átomo neutro < Raio do Ânion < Raio do Cátion."
+          "0": "Raio do Cátion < Raio do átomo neutro < Raio do Ânion.",
+          "1": "Raio do átomo neutro < Raio do Cátion < Raio do Ânion.",
+          "2": "Raio do Cátion < Raio do Ânion < Raio do átomo neutro.",
+          "3": "Raio do átomo neutro < Raio do Ânion < Raio do Cátion."
         },
+        "correct": 0,
         "value": 2
       }
     }

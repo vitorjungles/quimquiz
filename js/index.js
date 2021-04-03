@@ -3,7 +3,7 @@ year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
 var request = new XMLHttpRequest();
-request.open('GET', "./json/data.json")
+request.open('GET', "./json/data.json");
 
 request.responseType = 'json';
 request.send();
@@ -14,6 +14,7 @@ request.onload = function () {
   var AlternativesLength = 0;
   var QuestionsArray = [];
   var AlternativesArray = [];
+  var CorrectQuestions = [];
 
   var Header = document.createElement("header");
   var H1 = document.createElement("h1")
@@ -29,7 +30,7 @@ request.onload = function () {
   document.querySelector("body").firstChild.before(Header);
   document.querySelector("meta[name='viewport']").after(TitlePage);
 
-  for (let FirstKey in Questions["quiz"]["questions"]) {
+  for (let Key in Questions["quiz"]["questions"]) {
     QuestionsLength += 1;
   };
 
@@ -51,16 +52,20 @@ request.onload = function () {
     Div.append(Title);
     Div.classList = "box";
 
-    for (let SecondKey in Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"]) {
+    for (let Key in Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"]) {
       AlternativesLength += 1;
     };
 
-    Shuffle(AlternativesArray, AlternativesLength);
+    Shuffle(AlternativesArray, AlternativesLength, true);
 
     for (let i = 0; i < AlternativesArray.length; i++) {
       var Label = document.createElement("label");
       var Input = document.createElement("input");
       var Br = document.createElement("br");
+
+      if (AlternativesArray[i] == Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["correct"]) {
+        CorrectQuestions.push(i + (c * 4));
+      };
 
       Input.type = "radio";
       Input.name = `question${c + 1}`;
@@ -71,7 +76,7 @@ request.onload = function () {
 
       Form.append(Input);
       Form.append(Label);
-      if (Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"][`${i + 2}`] != undefined) { 
+      if (Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
         Form.append(Br);
       };
     };
@@ -132,91 +137,95 @@ request.onload = function () {
     return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + Math.ceil(min);
   };
 
-  function Shuffle(array, variable) {
+  function Shuffle(array, variable, ZeroOrOne = false) {
+    var Number = 1;
+    var Clone = variable;
+    if (ZeroOrOne) {
+      Clone -= 1;
+      Number = 0;
+    };
     while (array.length < variable) {
-      var RandomInt = Random(1, variable + 1);
+      var RandomInt = Random(Number, Clone + 1);
       while (array.indexOf(RandomInt) != -1) {
-        RandomInt = Random(1, variable + 1);
+        RandomInt = Random(Number, Clone + 1);
       };
       array.push(RandomInt);
     };
   };
-};
 
-var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
+  var total = 0, co = 0, count = 0, SecondCheck = false, ThirdCheck = false;
 
-function exchange(variable, text, color = 'black') {
-  variable.style.color = color;
-  variable.textContent = text;
-  return variable;
-};
+  function exchange(variable, text, color = 'black') {
+    variable.style.color = color;
+    variable.textContent = text;
+    return variable;
+  };
 
-document.querySelector("#validate").addEventListener('click', function Quiz() {
-  document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
-  if (SecondCheck && ThirdCheck) {
-    location.reload();
-  } else if (SecondCheck && !ThirdCheck) {
-    ThirdCheck = true;
+  document.querySelector("#validate").addEventListener('click', function Quiz() {
+    document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
+    if (SecondCheck && ThirdCheck) {
+      location.reload();
+    } else if (SecondCheck && !ThirdCheck) {
+      ThirdCheck = true;
 
-    var Old = document.createElement("h1");
-    var Old4 = document.querySelector("#validate");
-    var Old5 = document.querySelector("#txt");
+      var Old = document.createElement("h1");
+      var Old4 = document.querySelector("#validate");
+      var Old5 = document.querySelector("#txt");
 
-    Old.textContent = 'Analisando';
-    document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
-    Old4.value = 'Reiniciar quiz';
-    Old5.remove();
+      Old.textContent = 'Analisando';
+      document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
+      Old4.value = 'Reiniciar quiz';
+      Old5.remove();
 
-    var Interval = setInterval(Validation, 1000);
+      var Interval = setInterval(Validation, 1000);
 
-    var CorrectQuestions = [2, 4, 11, 13, 19, 22, 24];
+      function Validation() {
+        co += 1;
+        if (co == 5) {
+          clearInterval(Interval);
 
-    function Validation() {
-      co += 1;
-      if (co == 5) {
-        clearInterval(Interval);
+          for (let c = 0; c < document.querySelectorAll("input").length - 1; c++) {
+            var title = title;
+            var points = points;
+            var label = document.querySelectorAll("label").item(c);
+            var input = document.querySelectorAll("input").item(c);
 
-        for (let c = 0; c < document.querySelectorAll("input").length - 1; c++) {
-          var title = title;
-          var points = points;
-          var label = document.querySelectorAll("label").item(c);
-          var input = document.querySelectorAll("input").item(c);
-
-          if (c % 4 == 0) {
-            count += 1;
-            title = document.querySelectorAll("h1").item(count);
-            points = document.querySelector(`#q${count}`);
-          };
-
-          if (CorrectQuestions.indexOf(c) != -1) {
-            if (input.checked) {
-              total += 2;
-              title.style.color = '#1E8E3E';
-              points.textContent = '2/2';
+            if (c % 4 == 0) {
+              count += 1;
+              title = document.querySelectorAll("h1").item(count);
+              points = document.querySelector(`#q${count}`);
             };
-            label.style.background = '#E6F4EA';
 
-          } else if (input.checked) {
-            title.style.color = '#D93025';
-            label.style.background = '#FCE8E6';
-            points.textContent = '0/2';
+            if (CorrectQuestions.indexOf(c) != -1) {
+              if (input.checked) {
+                total += 2;
+                title.style.color = '#1E8E3E';
+                points.textContent = '2/2';
+              };
+              label.style.background = '#E6F4EA';
+
+            } else if (input.checked) {
+              title.style.color = '#D93025';
+              label.style.background = '#FCE8E6';
+              points.textContent = '0/2';
+            };
           };
+
+          var Old2 = document.createElement("h1");
+          var Old3 = document.createElement("h1");
+
+          Old2.id = 'txt3';
+          Old.textContent = `Nota: ${total}/${CorrectQuestions.length * 2} pontos.`;
+          Old2.textContent = `Acertos: ${total / 2}/${CorrectQuestions.length} questões.`;
+
+          total >= 8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
+          total >= 8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
+
+          [Old2, Old3].forEach(function (array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length - 1).after(array) });
+        } else {
+          Old.textContent += '.';
         };
-
-        var Old2 = document.createElement("h1");
-        var Old3 = document.createElement("h1");
-
-        Old2.id = 'txt3';
-        Old.textContent = `Nota: ${total}/${CorrectQuestions.length * 2} pontos.`;
-        Old2.textContent = `Acertos: ${total / 2}/${CorrectQuestions.length} questões.`;
-
-        total >= 8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
-        total >= 8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
-
-        [Old2, Old3].forEach(function (array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length - 1).after(array) });
-      } else {
-        Old.textContent += '.';
       };
     };
-  };
-}, { once: true });
+  }, { once: true });
+};
