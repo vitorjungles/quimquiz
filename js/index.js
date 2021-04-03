@@ -9,7 +9,11 @@ request.responseType = 'json';
 request.send();
 
 request.onload = function () {
-  var Questions = request.response;
+  const Questions = request.response;
+  var QuestionsLength = 0;
+  var AlternativesLength = 0;
+  var QuestionsArray = [];
+  var AlternativesArray = [];
 
   var Header = document.createElement("header");
   var H1 = document.createElement("h1")
@@ -26,6 +30,18 @@ request.onload = function () {
   document.querySelector("meta[name='viewport']").after(TitlePage);
 
   for (let FirstKey in Questions["quiz"]["questions"]) {
+    QuestionsLength += 1;
+  };
+
+  while (QuestionsArray.length < QuestionsLength) {
+    var RandomInt = Random(1, QuestionsLength + 1);
+    while (QuestionsArray.indexOf(RandomInt) != -1) {
+      RandomInt = Random(1, QuestionsLength + 1);
+    };
+    QuestionsArray.push(RandomInt);
+  };
+
+  for (let c = 0; c < QuestionsArray.length; c++) {
     var Div = document.createElement("div");
     var Title = document.createElement("h1");
     var Span = document.createElement("span");
@@ -35,32 +51,47 @@ request.onload = function () {
     Span.id = "red2";
     Span.textContent = "*";
     
-    Title.textContent = Questions["quiz"]["questions"][FirstKey]["title"];
+    Title.textContent = `0${c + 1}. ` + Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["title"];
     Title.firstChild.after(Span);
 
     Div.append(Title);
     Div.classList = "box";
 
-    for (let SecondKey in Questions["quiz"]["questions"][FirstKey]["alternatives"]) {
+    for (let SecondKey in Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"]) {
+      AlternativesLength += 1;
+    };
+  
+    while (AlternativesArray.length < AlternativesLength) {
+      var RandomInt = Random(1, AlternativesLength + 1);
+      while (AlternativesArray.indexOf(RandomInt) != -1) {
+        RandomInt = Random(1, AlternativesLength + 1);
+      };
+      AlternativesArray.push(RandomInt);
+    };
+
+    for (let i = 0; i < AlternativesArray.length; i++) {
       var Label = document.createElement("label");
       var Input = document.createElement("input");
       var Br = document.createElement("br");
       
       Input.type = "radio";
-      Input.name = FirstKey;
-      Input.id = `q${FirstKey.substring(FirstKey.length - 1, FirstKey.length)}-${SecondKey}`;
+      Input.name = `question${c + 1}`;
+      Input.id = `q${c + 1}-${i + 1}`;
 
-      Label.textContent = Questions["quiz"]["questions"][FirstKey]["alternatives"][SecondKey];
-      Label.htmlFor = `q${FirstKey.substring(FirstKey.length - 1, FirstKey.length)}-${SecondKey}`;
+      Label.textContent = `${String.fromCharCode(97 + i)}) ` + Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"][`${AlternativesArray[i]}`];
+      Label.htmlFor = `q${c + 1}-${i + 1}`;
 
       Form.append(Input);
       Form.append(Label);
-      if (Questions["quiz"]["questions"][FirstKey]["alternatives"][parseInt(SecondKey) + 1 + ''] != undefined) { 
+      if (Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"][`${i + 2}`] != undefined) { 
         Form.append(Br);
       };
     };
-    P.id = `q${FirstKey.substring(FirstKey.length - 1, FirstKey.length)}`
-    P.textContent = Questions["quiz"]["questions"][FirstKey]["value"] + " pontos";
+    AlternativesArray = [];
+    AlternativesLength = 0;
+
+    P.id = `q${c + 1}`;
+    P.textContent = Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["value"] + " pontos";
 
     Div.append(Form);
     Div.append(P);
@@ -104,6 +135,10 @@ request.onload = function () {
       SecondCheck = true;
       InputLoop(false);
     };
+  };
+
+  function Random(min, max) {
+    return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + Math.ceil(min);
   };
 };
 
@@ -169,11 +204,14 @@ document.querySelector("#validate").addEventListener('click', function Quiz() {
 
         var Old2 = document.createElement("h1");
         var Old3 = document.createElement("h1");
+
         Old2.id = 'txt3';
         Old.textContent = `Nota: ${total}/${CorrectQuestions.length * 2} pontos.`;
         Old2.textContent = `Acertos: ${total / 2}/${CorrectQuestions.length} questões.`;
+
         total >= 8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
         total >= 8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
+        
         [Old2, Old3].forEach(function (array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length - 1).after(array) });
       } else {
         Old.textContent += '.';
