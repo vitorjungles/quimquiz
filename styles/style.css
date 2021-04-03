@@ -19,15 +19,22 @@ header h1 {
 
 #questions {
   margin-bottom: 6rem;
+  height: fit-content;
 }
 
 .box {
   border-radius: 1rem;
   width: 50vw;
   margin: auto;
-  margin-top: 10rem;
+  margin-top: 6rem;
   padding: 1rem;
   line-height: 2rem;
+  transition: all 0.4s;
+}
+
+.box:hover {
+  transform: scale(1.06);
+  box-shadow: 10px 10px 20px black;
 }
 
 .box p {
@@ -68,6 +75,7 @@ label {
   opacity: 0.7;
   border: 0.2rem solid gray;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 #validate:focus {
@@ -99,5 +107,10 @@ a:hover, a:focus {
 @media screen and (max-width: 600px) {
   .box {
     width: auto;
+  }
+  
+  .box:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
