@@ -33,13 +33,7 @@ request.onload = function () {
     QuestionsLength += 1;
   };
 
-  while (QuestionsArray.length < QuestionsLength) {
-    var RandomInt = Random(1, QuestionsLength + 1);
-    while (QuestionsArray.indexOf(RandomInt) != -1) {
-      RandomInt = Random(1, QuestionsLength + 1);
-    };
-    QuestionsArray.push(RandomInt);
-  };
+  Shuffle(QuestionsArray, QuestionsLength);
 
   for (let c = 0; c < QuestionsArray.length; c++) {
     var Div = document.createElement("div");
@@ -61,13 +55,7 @@ request.onload = function () {
       AlternativesLength += 1;
     };
 
-    while (AlternativesArray.length < AlternativesLength) {
-      var RandomInt = Random(1, AlternativesLength + 1);
-      while (AlternativesArray.indexOf(RandomInt) != -1) {
-        RandomInt = Random(1, AlternativesLength + 1);
-      };
-      AlternativesArray.push(RandomInt);
-    };
+    Shuffle(AlternativesArray, AlternativesLength);
 
     for (let i = 0; i < AlternativesArray.length; i++) {
       var Label = document.createElement("label");
@@ -142,6 +130,16 @@ request.onload = function () {
 
   function Random(min, max) {
     return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + Math.ceil(min);
+  };
+
+  function Shuffle(array, variable) {
+    while (array.length < variable) {
+      var RandomInt = Random(1, variable + 1);
+      while (array.indexOf(RandomInt) != -1) {
+        RandomInt = Random(1, variable + 1);
+      };
+      array.push(RandomInt);
+    };
   };
 };
 
