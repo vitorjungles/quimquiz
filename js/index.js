@@ -50,7 +50,7 @@ request.onload = function () {
 
     Span.id = "red2";
     Span.textContent = "*";
-    
+
     Title.textContent = `0${c + 1}. ` + Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["title"];
     Title.firstChild.after(Span);
 
@@ -60,7 +60,7 @@ request.onload = function () {
     for (let SecondKey in Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"]) {
       AlternativesLength += 1;
     };
-  
+
     while (AlternativesArray.length < AlternativesLength) {
       var RandomInt = Random(1, AlternativesLength + 1);
       while (AlternativesArray.indexOf(RandomInt) != -1) {
@@ -73,7 +73,7 @@ request.onload = function () {
       var Label = document.createElement("label");
       var Input = document.createElement("input");
       var Br = document.createElement("br");
-      
+
       Input.type = "radio";
       Input.name = `question${c + 1}`;
       Input.id = `q${c + 1}-${i + 1}`;
@@ -95,11 +95,14 @@ request.onload = function () {
 
     Div.append(Form);
     Div.append(P);
-    
+
     Section.append(Div);
   };
   var Main = document.querySelector("main");
-  Main.firstChild.before(Section)
+
+  Main.firstChild.before(Section);
+
+  document.querySelector("body").hidden = false;
 
   function InputLoop(add = true) {
     for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
@@ -108,7 +111,7 @@ request.onload = function () {
       };
     };
   };
-  
+
   InputLoop();
 
   function Permission() {
@@ -128,7 +131,7 @@ request.onload = function () {
         break;
       };
     };
-  
+
     if (v) {
       var OldText = document.querySelector("#txt");
       OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
@@ -211,7 +214,7 @@ document.querySelector("#validate").addEventListener('click', function Quiz() {
 
         total >= 8 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
         total >= 8 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
-        
+
         [Old2, Old3].forEach(function (array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length - 1).after(array) });
       } else {
         Old.textContent += '.';
