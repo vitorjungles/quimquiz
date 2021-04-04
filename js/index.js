@@ -107,7 +107,7 @@ request.onload = () => {
   function InputLoop(add = true) {
     for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
       for (let i = 0; i < document.querySelectorAll("form").item(c - 1).length; i++) {
-        add ? document.querySelectorAll(`input[name='question${c}']`).item(i).onclick =  Permission : document.querySelectorAll(`input[name='question${c}']`).item(i).onclick = null;
+        add ? document.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : document.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
       };
     };
   };
