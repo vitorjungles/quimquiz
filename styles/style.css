@@ -1,8 +1,11 @@
 * {
-  background: rgb(145, 216, 131);
   font-family: 'Poppins', sans-serif;
   color: black;
   text-align: center;
+}
+
+body {
+  background: linear-gradient(to bottom, rgb(156, 255, 136), rgb(34, 197, 209), lavender)
 }
 
 header h1 {

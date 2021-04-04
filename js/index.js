@@ -8,7 +8,7 @@ request.open('GET', "./json/data.json");
 request.responseType = 'json';
 request.send();
 
-request.onload = function () {
+request.onload = () => {
   const Questions = request.response;
   var QuestionsLength = 0;
   var QuestionsArray = [];
