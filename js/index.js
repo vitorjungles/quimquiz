@@ -11,9 +11,11 @@ request.send();
 request.onload = function () {
   const Questions = request.response;
   var QuestionsLength = 0;
-  var AlternativesLength = 0;
   var QuestionsArray = [];
+  var AlternativesLength = 0;
   var AlternativesArray = [];
+  var NumberOfInput = 0;
+  var NumberOfAllAlternatives = [];
   var CorrectQuestions = [];
   var CorrectQuestionsValue = [];
 
@@ -59,13 +61,15 @@ request.onload = function () {
 
     Shuffle(AlternativesArray, AlternativesLength, true);
 
+    NumberOfAllAlternatives.push(AlternativesLength);
+
     for (let i = 0; i < AlternativesArray.length; i++) {
       var Label = document.createElement("label");
       var Input = document.createElement("input");
       var Br = document.createElement("br");
 
       if (AlternativesArray[i] == Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["correct"]) {
-        CorrectQuestions.push(i + (c * 4));
+        CorrectQuestions.push(NumberOfInput);
       };
 
       Input.type = "radio";
@@ -80,6 +84,7 @@ request.onload = function () {
       if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
         Form.append(Br);
       };
+      NumberOfInput += 1;
     };
     CorrectQuestionsValue.push(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"]);
     AlternativesArray = [];
@@ -186,13 +191,14 @@ request.onload = function () {
             var label = document.querySelectorAll("label").item(c);
             var input = document.querySelectorAll("input").item(c);
 
-            if (c % 4 == 0) {
+            if (c + 1 == NumberOfAllAlternatives[0] - 1) {
               count += 1;
               title = document.querySelectorAll("h1").item(count);
               points = document.querySelector(`#q${count}`);
+              NumberOfAllAlternatives.splice(0, 1);
             };
 
-            if (CorrectQuestions.indexOf(c) != -1) {
+            if (CorrectQuestions.indexOf(c) != -1 && title != undefined) {
               if (input.checked) {
                 total += 2;
                 title.style.color = '#1E8E3E';
@@ -200,7 +206,7 @@ request.onload = function () {
               };
               label.style.background = '#E6F4EA';
 
-            } else if (input.checked) {
+            } else if (input.checked && title != undefined) {
               title.style.color = '#D93025';
               label.style.background = '#FCE8E6';
               points.textContent = '0/2';
