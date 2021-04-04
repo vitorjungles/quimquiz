@@ -2,7 +2,7 @@
   "quiz": {
     "title": "QuímQuiz",
     "questions": {
-      "question1": {
+      "0": {
         "title": "Sabendo que a Tabela periódica atual contém as Famílias A (elementos representativos) e as Famílias B (elementos de transição), marque a alternativa que há somente elementos de transição:",
         "alternatives": {
           "0": "Li, Ag, B, Ar.",
@@ -13,7 +13,7 @@
         "correct": 2,
         "value": 2
       },
-      "question2": {
+      "1": {
         "title": "O período da Tabela Periódica a qual um elemento químico pertence é igual ao seu:",
         "alternatives": {
           "0": "número de camadas eletrônicas.",
@@ -24,7 +24,7 @@
         "correct": 0,
         "value": 2
       },
-      "question3": {
+      "2": {
         "title": "Dado o elemento químico Ni com número atômico igual a 28, marque a alternativa que contém a sua posição correta:",
         "alternatives": {
           "0": "2° Período e Família IIIA.",
@@ -35,7 +35,7 @@
         "correct": 3,
         "value": 2
       },
-      "question4": {
+      "3": {
         "title": "Com base nos conceitos da eletronegatividade, pode-se afirmar que na Tabela Periódica, ela:",
         "alternatives": {
           "0": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de baixo para cima.",
@@ -46,7 +46,7 @@
         "correct": 1,
         "value": 2
       },
-      "question5": {
+      "4": {
         "title": "Dos elementos químicos abaixo, qual não faz parte de nenhuma família:",
         "alternatives": {
           "0": "Po.",
@@ -57,7 +57,7 @@
         "correct": 3,
         "value": 2
       },
-      "question6": {
+      "5": {
         "title": "Marque a alternativa que há somente gases nobres:",
         "alternatives": {
           "0": "Fe, Nb, Ne, Ar.",
@@ -68,7 +68,7 @@
         "correct": 2,
         "value": 2
       },
-      "question7": {
+      "6": {
         "title": "Em relação ao raio atômico de um átomo, assinale a resposta mais adequada:",
         "alternatives": {
           "0": "Raio do Cátion < Raio do átomo neutro < Raio do Ânion.",

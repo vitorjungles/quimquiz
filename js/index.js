@@ -15,6 +15,7 @@ request.onload = function () {
   var QuestionsArray = [];
   var AlternativesArray = [];
   var CorrectQuestions = [];
+  var CorrectQuestionsValue = [];
 
   var Header = document.createElement("header");
   var H1 = document.createElement("h1")
@@ -46,13 +47,13 @@ request.onload = function () {
     Span.id = "red2";
     Span.textContent = "*";
 
-    Title.textContent = `0${c + 1}. ` + Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["title"];
+    Title.textContent = `0${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"];
     Title.firstChild.after(Span);
 
     Div.append(Title);
     Div.classList = "box";
 
-    for (let Key in Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"]) {
+    for (let Key in Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"]) {
       AlternativesLength += 1;
     };
 
@@ -63,7 +64,7 @@ request.onload = function () {
       var Input = document.createElement("input");
       var Br = document.createElement("br");
 
-      if (AlternativesArray[i] == Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["correct"]) {
+      if (AlternativesArray[i] == Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["correct"]) {
         CorrectQuestions.push(i + (c * 4));
       };
 
@@ -71,20 +72,21 @@ request.onload = function () {
       Input.name = `question${c + 1}`;
       Input.id = `q${c + 1}-${i + 1}`;
 
-      Label.textContent = `${String.fromCharCode(97 + i)}) ` + Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"][`${AlternativesArray[i]}`];
+      Label.textContent = `${String.fromCharCode(97 + i)}) ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${AlternativesArray[i]}`];
       Label.htmlFor = `q${c + 1}-${i + 1}`;
 
       Form.append(Input);
       Form.append(Label);
-      if (Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
+      if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
         Form.append(Br);
       };
     };
+    CorrectQuestionsValue.push(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"]);
     AlternativesArray = [];
     AlternativesLength = 0;
 
     P.id = `q${c + 1}`;
-    P.textContent = Questions["quiz"]["questions"][`question${QuestionsArray[c]}`]["value"] + " pontos";
+    P.textContent = Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"] + " pontos";
 
     Div.append(Form);
     Div.append(P);
@@ -137,17 +139,11 @@ request.onload = function () {
     return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + Math.ceil(min);
   };
 
-  function Shuffle(array, variable, ZeroOrOne = false) {
-    var Number = 1;
-    var Clone = variable;
-    if (ZeroOrOne) {
-      Clone -= 1;
-      Number = 0;
-    };
+  function Shuffle(array, variable) {
     while (array.length < variable) {
-      var RandomInt = Random(Number, Clone + 1);
+      var RandomInt = Random(0, variable);
       while (array.indexOf(RandomInt) != -1) {
-        RandomInt = Random(Number, Clone + 1);
+        RandomInt = Random(0, variable);
       };
       array.push(RandomInt);
     };
