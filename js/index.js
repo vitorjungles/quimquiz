@@ -49,7 +49,7 @@ request.onload = () => {
     Span.id = "red2";
     Span.textContent = "*";
 
-    Title.textContent = `0${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"];
+    Title.textContent = c + 1 < 10 ? `0${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"] : `${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"];
     Title.firstChild.after(Span);
 
     Div.append(Title);
@@ -131,8 +131,6 @@ request.onload = () => {
         break;
       };
     };
-
-    console.log(v)
 
     if (v) {
       var OldText = document.querySelector("#txt");
@@ -236,8 +234,8 @@ request.onload = () => {
           Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos.`;
           Old2.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões.`;
 
-          total >= ValueOfQuiz / 2 + 1 ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
-          total >= ValueOfQuiz / 2 + 1 ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
 
           [Old2, Old3].forEach(function (array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length - 1).after(array) });
         } else {
