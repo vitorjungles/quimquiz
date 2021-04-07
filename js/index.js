@@ -163,11 +163,16 @@ request.onload = () => {
     return variable;
   };
 
+  var Counting = 0;
+  var QuizTime = setInterval(function () { Counting += 1 }, 1000)
+
   document.querySelector("#validate").addEventListener('click', function Quiz() {
     document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
     if (SecondCheck && ThirdCheck) {
       location.reload();
     } else if (SecondCheck && !ThirdCheck) {
+      clearInterval(QuizTime);
+
       ThirdCheck = true;
 
       var Old = document.createElement("h1");
@@ -227,17 +232,20 @@ request.onload = () => {
             };
           };
 
-          var Old2 = document.createElement("h1");
-          var Old3 = document.createElement("h1");
+          var HitsElement = document.createElement("h1");
+          var Feedback = document.createElement("h1");
+          var TimeElement = document.createElement("h1");
 
-          Old2.id = 'txt3';
+          TimeElement.textContent = `Tempo: ${Counting}s.`;
+          TimeElement.id = 'time';
+          HitsElement.id = 'txt3';
           Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos.`;
-          Old2.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões.`;
+          HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões.`;
 
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.style.color = Old2.style.color = 'darkblue' : Old.style.color = Old2.style.color = '#D93025';
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old3.textContent = 'Parabéns! Mandou bem! :)' : Old3.textContent = 'Não foi desta vez... :(';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.style.color = HitsElement.style.color = 'darkblue' : Old.style.color = HitsElement.style.color = '#D93025';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
 
-          [Old2, Old3].forEach(function (array) { document.querySelectorAll("section").item(1).querySelectorAll("h1").item(document.querySelectorAll("section").item(1).querySelectorAll("h1").length - 1).after(array) });
+          [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1").item(document.querySelector("#final").querySelectorAll("h1").length - 1).after(array) });
         } else {
           Old.textContent += '.';
         };

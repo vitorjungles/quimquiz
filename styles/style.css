@@ -5,7 +5,8 @@
 }
 
 body {
-  background: linear-gradient(to bottom, rgb(156, 255, 136), rgb(34, 197, 209), lavender)
+  background: linear-gradient(to bottom, rgb(156, 255, 136), rgb(34, 197, 209), lavender);
+  min-width: 260px;
 }
 
 header h1 {
@@ -95,7 +96,7 @@ label {
   margin-bottom: 4rem;
 }
 
-#txt3 {
+#time {
   margin-bottom: 6rem;
 }
 
