@@ -39,7 +39,7 @@ request.onload = () => {
 
   Shuffle(QuestionsArray, QuestionsLength);
 
-  for (let c = 0; c < QuestionsArray.length; c++) {
+  for (let c = 0, length = QuestionsArray.length; c < length; c++) {
     var Div = document.createElement("div");
     var Title = document.createElement("h1");
     var Span = document.createElement("span");
@@ -63,7 +63,7 @@ request.onload = () => {
 
     NumberOfAllAlternatives.push(AlternativesLength);
 
-    for (let i = 0; i < AlternativesArray.length; i++) {
+    for (let i = 0, len = AlternativesArray.length; i < len; i++) {
       var Label = document.createElement("label");
       var Input = document.createElement("input");
       var Br = document.createElement("br");
@@ -206,7 +206,7 @@ request.onload = () => {
           var ValueOfQuiz = 0;
           var Hits = 0;
 
-          for (let c = 0; c < document.querySelectorAll("input").length - 1; c++) {
+          for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
             var title = title;
             var points = points;
             var label = document.querySelectorAll("label").item(c);
