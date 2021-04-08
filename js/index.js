@@ -163,8 +163,20 @@ request.onload = () => {
     return variable;
   };
 
-  var Counting = 0;
-  var QuizTime = setInterval(function () { Counting += 1 }, 1000)
+  var Minutes = 0;
+  var Seconds = 0;
+  var Hours = 0;
+  var QuizTime = setInterval(function () {
+    Seconds += 1;
+    if (Seconds == 60) {
+      Seconds = 0;
+      Minutes += 1;
+    };
+    if (Minutes == 60) {
+      Minutes = 0;
+      Hours += 1;
+    };
+  }, 1000);
 
   document.querySelector("#validate").addEventListener('click', function Quiz() {
     document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
@@ -236,11 +248,21 @@ request.onload = () => {
           var Feedback = document.createElement("h1");
           var TimeElement = document.createElement("h1");
 
-          TimeElement.textContent = `Tempo: ${Counting}s.`;
+          if (Hours < 10) {
+            Hours = `0${Hours}`;
+          };
+          if (Minutes < 10) {
+            Minutes = `0${Minutes}`;
+          };
+          if (Seconds < 10) {
+            Seconds = `0${Seconds}`;
+          };
+
+          TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
           TimeElement.id = 'time';
           HitsElement.id = 'txt3';
-          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos.`;
-          HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões.`;
+          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
+          HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
 
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.style.color = HitsElement.style.color = 'darkblue' : Old.style.color = HitsElement.style.color = '#D93025';
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
