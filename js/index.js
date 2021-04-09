@@ -98,10 +98,7 @@ request.onload = () => {
 
     Section.append(Div);
   };
-  var Main = document.querySelector("main");
-
-  Main.firstChild.before(Section);
-
+  document.querySelector("main").before(Section);
   document.querySelector("body").hidden = false;
 
   function InputLoop(add = true) {
@@ -163,9 +160,7 @@ request.onload = () => {
     return variable;
   };
 
-  var Minutes = 0;
-  var Seconds = 0;
-  var Hours = 0;
+  var Minutes = 0, Seconds = 0, Hours = 0;
   var QuizTime = setInterval(function () {
     Seconds += 1;
     if (Seconds == 60) {
@@ -188,13 +183,13 @@ request.onload = () => {
       ThirdCheck = true;
 
       var Old = document.createElement("h1");
-      var Old4 = document.querySelector("#validate");
-      var Old5 = document.querySelector("#txt");
+      var Old2 = document.querySelector("#validate");
+      var Old3 = document.querySelector("#txt");
 
       Old.textContent = 'Analisando';
       document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
-      Old4.value = 'Reiniciar quiz';
-      Old5.remove();
+      Old2.value = 'Reiniciar quiz';
+      Old3.remove();
 
       var Interval = setInterval(Validation, 1000);
 
@@ -203,10 +198,7 @@ request.onload = () => {
         if (co == 5) {
           clearInterval(Interval);
 
-          var ValueOfQuiz = 0;
-          var Hits = 0;
-          var title = '';
-          var points = '';
+          var ValueOfQuiz = 0, Hits = 0, title, points;
 
           for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
             var label = document.querySelectorAll("label").item(c);
@@ -258,11 +250,11 @@ request.onload = () => {
             Seconds = `0${Seconds}`;
           };
 
-          TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
           TimeElement.id = 'time';
+          TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
           HitsElement.id = 'txt3';
-          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
           HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
+          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
 
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.style.color = HitsElement.style.color = 'darkblue' : Old.style.color = HitsElement.style.color = '#D93025';
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
