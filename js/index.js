@@ -205,10 +205,10 @@ request.onload = () => {
 
           var ValueOfQuiz = 0;
           var Hits = 0;
+          var title = '';
+          var points = '';
 
           for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
-            var title = title;
-            var points = points;
             var label = document.querySelectorAll("label").item(c);
             var input = document.querySelectorAll("input").item(c);
 
