@@ -5,12 +5,12 @@
 }
 
 body {
-  background: linear-gradient(to bottom, rgb(156, 255, 136), rgb(34, 197, 209), lavender);
+  background: linear-gradient(to right, rgb(156, 255, 136), lavender);
   min-width: 260px;
 }
 
 header h1 {
-  margin-bottom: 12rem;
+  margin-bottom: 6vw;
 }
 
 #red2, #txt {
@@ -89,6 +89,10 @@ label {
 #validate:hover {
   opacity: 1.2;
   border-color: black;
+}
+
+#validate:disabled {
+  cursor: not-allowed;
 }
 
 #txt {

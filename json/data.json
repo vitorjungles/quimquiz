@@ -1,6 +1,7 @@
 {
   "quiz": {
     "title": "QuímQuiz",
+    "type": "one-question",
     "questions": {
       "0": {
         "title": "Sabendo que a Tabela periódica atual contém as Famílias A (elementos representativos) e as Famílias B (elementos de transição), marque a alternativa que há somente elementos de transição:",

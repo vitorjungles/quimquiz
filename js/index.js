@@ -18,6 +18,8 @@ request.onload = () => {
   var NumberOfAllAlternatives = [];
   var CorrectQuestions = [];
   var CorrectQuestionsValue = [];
+  var Array = [];
+  var Index = 0;
 
   var Header = document.createElement("header");
   var H1 = document.createElement("h1")
@@ -96,10 +98,54 @@ request.onload = () => {
     Div.append(Form);
     Div.append(P);
 
-    Section.append(Div);
+    Array.push(Div)
   };
-  document.querySelector("main").before(Section);
+  if (Questions["quiz"]["type"] == "form") {
+    Array.forEach(function (array) { Section.append(array) });
+  } else if (Questions["quiz"]["type"] == "one-question") {
+    document.querySelector("#txt").hidden = true;
+    document.querySelector("#validate").remove();
+    Section.append(Array[Index]);
+
+    var BackButton = document.createElement("input");
+    var NextButton = document.createElement("input");
+
+    NextButton.id = 'validate';
+    NextButton.value = 'Avançar';
+    NextButton.type = 'button';
+    NextButton.style.margin = '0 0 0 10vw';
+    NextButton.addEventListener('click', function Next() {
+      if (Array[Index + 1] != undefined) {
+        Array[Index].remove();
+        Index += 1;
+        Section.append(Array[Index]);
+      } else if (Array[Index + 2] != undefined) {
+        NextButton.value = 'Enviar';
+      };
+    });
+
+    BackButton.id = 'validate';
+    BackButton.value = 'Retornar';
+    BackButton.type = 'button';
+    BackButton.style.margin = '0 10vw 0 0';
+    BackButton.addEventListener('click', function Back() {
+      if (Array[Index - 1] != undefined) {
+        if (NextButton.value == 'Enviar') {
+          NextButton.value = 'Avançar';
+        };
+        Array[Index].remove();
+        Index -= 1;
+        Section.append(Array[Index]);
+      };
+    });
+
+    [BackButton, NextButton].forEach(function (array) { document.querySelector("#final").append(array) });
+  };
+
+  document.querySelector("main").firstChild.before(Section);
   document.querySelector("body").hidden = false;
+
+  console.log(Array);
 
   function InputLoop(add = true) {
     for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
