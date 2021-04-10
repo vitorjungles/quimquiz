@@ -98,7 +98,7 @@ request.onload = () => {
 
     Section.append(Div);
   };
-  document.querySelector("main").before(Section);
+  document.querySelector("main").firstChild.before(Section);
   document.querySelector("body").hidden = false;
 
   function InputLoop(add = true) {
