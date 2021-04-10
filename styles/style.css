@@ -5,15 +5,15 @@
 }
 
 body {
-  background: linear-gradient(to right, rgb(156, 255, 136), lavender);
+  background: linear-gradient(to right, #16a085, #f4d03f);
   min-width: 260px;
 }
 
 header h1 {
-  margin-bottom: 6vw;
+  margin-bottom: 16rem;
 }
 
-#red2, #txt {
+#red2 {
   color: #D93025;
 }
 
@@ -22,7 +22,7 @@ header h1 {
 }
 
 #questions {
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   height: fit-content;
 }
 
@@ -67,13 +67,53 @@ label {
   padding: 0 0.4rem;
 }
 
+.green {
+  color: #1E8E3E;
+}
+
+.darkblue {
+  color: darkblue;
+}
+
+.red {
+  color: #D93025;
+}
+
+.green-background {
+  background: #E6F4EA;
+}
+
+.red-background {
+  background: #FCE8E6;
+}
+
 #final {
   margin: 1rem 0 10rem;
 }
 
+.material-icons-outlined.md-36 {
+  position: absolute;
+  top: 50%;
+  font-size: 36px;
+  transition: all 0.3s;
+  user-select: none;
+}
+
+.material-icons-outlined.md-36:hover {
+  transform: scale(1.8);
+  cursor: pointer;
+}
+
+.material-icons-outlined.back {
+  left: 1rem;
+}
+
+.material-icons-outlined.next {
+  right: 1rem;
+}
+
 #validate {
-  border-radius: 2rem;
-  margin-bottom: 4rem;
+  border-radius: 1rem;
   font-weight: 600;
   padding: 1rem;
   opacity: 0.7;
@@ -117,12 +157,34 @@ a:hover, a:focus {
 }
 
 @media screen and (max-width: 600px) {
+  header h1 {
+    margin-bottom: 6rem;
+  }
+
   .box {
-    width: auto;
+    width: 50vw;
+    font-size: 13px;
+  }
+
+  .box h1 {
+    font-size: medium;
+  }
+
+  .material-icons-outlined.md-36 {
+    font-size: 24px;
+    top: 96%;
+  }
+
+  .material-icons-outlined.md-36:hover {
+    transform: none;
   }
   
   .box:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  footer {
+    font-size: small;
   }
 }

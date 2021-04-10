@@ -98,48 +98,167 @@ request.onload = () => {
     Div.append(Form);
     Div.append(P);
 
-    Array.push(Div)
+    Array.push(Div);
   };
+
+  var total = 0, co = 0, NumberOfForms = 0, SecondCheck = false, ThirdCheck = false;
+  var Minutes = 0, Seconds = 0, Hours = 0;
+  var QuizTime = setInterval(function () {
+    Seconds += 1;
+    if (Seconds == 60) {
+      Seconds = 0;
+      Minutes += 1;
+    };
+    if (Minutes == 60) {
+      Minutes = 0;
+      Hours += 1;
+    };
+  }, 1000);
+  NumberOfInput = 0;
+
+  Array.forEach(function (array) { Section.append(array) });
+
+  InputLoop();
+
   if (Questions["quiz"]["type"] == "form") {
-    Array.forEach(function (array) { Section.append(array) });
-  } else if (Questions["quiz"]["type"] == "one-question") {
-    document.querySelector("#txt").hidden = true;
-    document.querySelector("#validate").remove();
-    Section.append(Array[Index]);
+    document.querySelector("#validate").addEventListener('click', function Quiz() {
+      document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
+      if (SecondCheck && ThirdCheck) {
+        location.reload();
+      } else if (SecondCheck && !ThirdCheck) {
+        clearInterval(QuizTime);
 
-    var BackButton = document.createElement("input");
-    var NextButton = document.createElement("input");
+        ThirdCheck = true;
 
-    NextButton.id = 'validate';
-    NextButton.value = 'Avançar';
-    NextButton.type = 'button';
-    NextButton.style.margin = '0 0 0 10vw';
-    NextButton.addEventListener('click', function Next() {
-      if (Array[Index + 1] != undefined) {
-        Array[Index].remove();
-        Index += 1;
-        Section.append(Array[Index]);
-      } else if (Array[Index + 2] != undefined) {
-        NextButton.value = 'Enviar';
-      };
-    });
+        var Old = document.createElement("h1");
+        var Old2 = document.querySelector("#validate");
+        var Old3 = document.querySelector("#txt");
 
-    BackButton.id = 'validate';
-    BackButton.value = 'Retornar';
-    BackButton.type = 'button';
-    BackButton.style.margin = '0 10vw 0 0';
-    BackButton.addEventListener('click', function Back() {
-      if (Array[Index - 1] != undefined) {
-        if (NextButton.value == 'Enviar') {
-          NextButton.value = 'Avançar';
+        Old.textContent = 'Analisando';
+        document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
+        Old2.value = 'Reiniciar quiz';
+        Old3.remove();
+  
+        var Interval = setInterval(Validation, 1000);
+
+        function Validation() {
+          co += 1;
+          if (co == 5) {
+            clearInterval(Interval);
+
+            var ValueOfQuiz = 0, Hits = 0, title, points;
+
+            for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
+              var label = document.querySelectorAll("label").item(c);
+              var input = document.querySelectorAll("input").item(c);
+
+              if (NumberOfInput == 0) {
+                NumberOfForms += 1;
+                title = document.querySelectorAll("h1").item(NumberOfForms);
+                points = document.querySelector(`#q${NumberOfForms}`);
+              };
+
+              NumberOfInput += 1;
+
+              if (CorrectQuestions.indexOf(c) != -1) {
+                ValueOfQuiz += CorrectQuestionsValue[0];
+
+                if (input.checked) {
+                  total += CorrectQuestionsValue[0];
+                  title.classList = 'green';
+                  points.textContent = `${CorrectQuestionsValue[0]}/${CorrectQuestionsValue[0]}`;
+                  Hits += 1;
+                };
+                label.classList = 'green-background';
+
+              } else if (input.checked) {
+                title.classList = 'red';
+                label.classList = 'red-background';
+                points.textContent = `0/${CorrectQuestionsValue[0]}`;
+              };
+
+              if (NumberOfInput == NumberOfAllAlternatives[0]) {
+                NumberOfInput = 0;
+                NumberOfAllAlternatives.splice(0, 1);
+                CorrectQuestionsValue.splice(0, 1);
+              };
+            };
+
+            var HitsElement = document.createElement("h1");
+            var Feedback = document.createElement("h1");
+            var TimeElement = document.createElement("h1");
+  
+            if (Hours < 10) {
+              Hours = `0${Hours}`;
+            };
+            if (Minutes < 10) {
+              Minutes = `0${Minutes}`;
+            };
+            if (Seconds < 10) {
+              Seconds = `0${Seconds}`;
+            };
+
+            TimeElement.id = 'time';
+            TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
+            HitsElement.id = 'txt3';
+            HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
+            Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
+
+            total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
+            total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
+  
+            [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1").item(document.querySelector("#final").querySelectorAll("h1").length - 1).after(array) });
+          } else {
+            Old.textContent += '.';
+          };
         };
-        Array[Index].remove();
-        Index -= 1;
-        Section.append(Array[Index]);
+      };
+    }, { once: true }) 
+  } else if (Questions["quiz"]["type"] == "one-question") {
+    console.log(Section)
+    for (let c = 0, length = Array.length; c < length; c++) {
+      if (c != 0) {
+        Array[c].hidden = true;
+      };
+    };
+    document.querySelector("#validate").hidden = document.querySelector("#txt").hidden = true;
+
+    var Control = document.createElement("section");
+    var BackIcon = document.createElement("span");
+    var NextIcon = document.createElement("span");
+
+    Control.id = 'control';
+
+    NextIcon.classList = 'material-icons-outlined md-36 next';
+    NextIcon.textContent = 'arrow_forward_ios';
+    NextIcon.addEventListener('click', function Next() {
+      if (Array[Index + 1] != undefined) {
+        if (Array[Index + 2] == undefined) {
+          document.querySelector("#validate").hidden = false;
+        };
+        Array[Index].hidden = true;
+        Index += 1;
+        Array[Index].hidden = false;
       };
     });
 
-    [BackButton, NextButton].forEach(function (array) { document.querySelector("#final").append(array) });
+    BackIcon.classList = 'material-icons-outlined md-36 back';
+    BackIcon.textContent = 'arrow_back_ios';
+    BackIcon.addEventListener('click', function Back() {
+      if (Array[Index - 1] != undefined) {
+        if (document.querySelector("#validate").hidden == false) {
+          document.querySelector("#validate").hidden = true;
+        };
+        Array[Index].hidden = true;
+        Index -= 1;
+        Array[Index].hidden = false;
+      };
+    });
+
+    [BackIcon, NextIcon].forEach(function (array) { Control.append(array) });
+  };
+  if (Questions["quiz"]["type"] == "one-question") {
+    document.querySelector("main").firstChild.before(Control);
   };
 
   document.querySelector("main").firstChild.before(Section);
@@ -148,14 +267,12 @@ request.onload = () => {
   console.log(Array);
 
   function InputLoop(add = true) {
-    for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
-      for (let i = 0; i < document.querySelectorAll("form").item(c - 1).length; i++) {
-        add ? document.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : document.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
+    for (let c = 1, length = Section.querySelectorAll("form").length + 1; c < length; c++) {
+      for (let i = 0, len = Section.querySelectorAll("form").item(c - 1).length; i < len; i++) {
+        add ? Section.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : Section.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
       };
     };
   };
-
-  InputLoop();
 
   function Permission() {
     var v = true;
@@ -175,9 +292,12 @@ request.onload = () => {
       };
     };
 
+    console.log(v)
+
     if (v) {
       var OldText = document.querySelector("#txt");
-      OldText = exchange(OldText, 'Pronto para envio', '#1E8E3E');
+      OldText.textContent = 'Pronto para envio';
+      OldText.classList = 'green';
       SecondCheck = true;
       InputLoop(false);
     };
@@ -196,120 +316,4 @@ request.onload = () => {
       array.push(RandomInt);
     };
   };
-
-  var total = 0, co = 0, NumberOfForms = 0, SecondCheck = false, ThirdCheck = false;
-  NumberOfInput = 0;
-
-  function exchange(variable, text, color = 'black') {
-    variable.style.color = color;
-    variable.textContent = text;
-    return variable;
-  };
-
-  var Minutes = 0, Seconds = 0, Hours = 0;
-  var QuizTime = setInterval(function () {
-    Seconds += 1;
-    if (Seconds == 60) {
-      Seconds = 0;
-      Minutes += 1;
-    };
-    if (Minutes == 60) {
-      Minutes = 0;
-      Hours += 1;
-    };
-  }, 1000);
-
-  document.querySelector("#validate").addEventListener('click', function Quiz() {
-    document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
-    if (SecondCheck && ThirdCheck) {
-      location.reload();
-    } else if (SecondCheck && !ThirdCheck) {
-      clearInterval(QuizTime);
-
-      ThirdCheck = true;
-
-      var Old = document.createElement("h1");
-      var Old2 = document.querySelector("#validate");
-      var Old3 = document.querySelector("#txt");
-
-      Old.textContent = 'Analisando';
-      document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
-      Old2.value = 'Reiniciar quiz';
-      Old3.remove();
-
-      var Interval = setInterval(Validation, 1000);
-
-      function Validation() {
-        co += 1;
-        if (co == 5) {
-          clearInterval(Interval);
-
-          var ValueOfQuiz = 0, Hits = 0, title, points;
-
-          for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
-            var label = document.querySelectorAll("label").item(c);
-            var input = document.querySelectorAll("input").item(c);
-
-            if (NumberOfInput == 0) {
-              NumberOfForms += 1;
-              title = document.querySelectorAll("h1").item(NumberOfForms);
-              points = document.querySelector(`#q${NumberOfForms}`);
-            };
-
-            NumberOfInput += 1;
-
-            if (CorrectQuestions.indexOf(c) != -1) {
-              ValueOfQuiz += CorrectQuestionsValue[0];
-
-              if (input.checked) {
-                total += CorrectQuestionsValue[0];
-                title.style.color = '#1E8E3E';
-                points.textContent = `${CorrectQuestionsValue[0]}/${CorrectQuestionsValue[0]}`;
-                Hits += 1;
-              };
-              label.style.background = '#E6F4EA';
-
-            } else if (input.checked) {
-              title.style.color = '#D93025';
-              label.style.background = '#FCE8E6';
-              points.textContent = `0/${CorrectQuestionsValue[0]}`;
-            };
-
-            if (NumberOfInput == NumberOfAllAlternatives[0]) {
-              NumberOfInput = 0;
-              NumberOfAllAlternatives.splice(0, 1);
-              CorrectQuestionsValue.splice(0, 1);
-            };
-          };
-
-          var HitsElement = document.createElement("h1");
-          var Feedback = document.createElement("h1");
-          var TimeElement = document.createElement("h1");
-
-          if (Hours < 10) {
-            Hours = `0${Hours}`;
-          };
-          if (Minutes < 10) {
-            Minutes = `0${Minutes}`;
-          };
-          if (Seconds < 10) {
-            Seconds = `0${Seconds}`;
-          };
-
-          TimeElement.id = 'time';
-          TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
-          HitsElement.id = 'txt3';
-          HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
-          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
-
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.style.color = HitsElement.style.color = 'darkblue' : Old.style.color = HitsElement.style.color = '#D93025';
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
-
-          [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1").item(document.querySelector("#final").querySelectorAll("h1").length - 1).after(array) });
-        } else {
-          Old.textContent += '.';
-        };
-      };
-    };
-  }, { once: true });
 };
