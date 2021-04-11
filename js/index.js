@@ -213,9 +213,7 @@ request.onload = () => {
           };
         };
       };
-    }, { once: true }) 
-  } else if (Questions["quiz"]["type"] == "one-question") {
-    console.log(Section)
+    }, { once: true }) } else if (Questions["quiz"]["type"] == "one-question") {
     for (let c = 0, length = Array.length; c < length; c++) {
       if (c != 0) {
         Array[c].hidden = true;
@@ -237,8 +235,7 @@ request.onload = () => {
           document.querySelector("#validate").hidden = false;
         };
         Array[Index].hidden = true;
-        Index += 1;
-        Array[Index].hidden = false;
+        Array[Index += 1].hidden = false;
       };
     });
 
@@ -250,8 +247,7 @@ request.onload = () => {
           document.querySelector("#validate").hidden = true;
         };
         Array[Index].hidden = true;
-        Index -= 1;
-        Array[Index].hidden = false;
+        Array[Index -= 1].hidden = false;
       };
     });
 
@@ -276,12 +272,12 @@ request.onload = () => {
 
   function Permission() {
     var v = true;
-    for (let c = 1; c < document.querySelectorAll("form").length + 1; c++) {
-      for (let i = 0; i < 4; i++) {
+    for (let c = 1, length = document.querySelectorAll("form").length + 1; c < length; c++) {
+      for (let i = 0, len = document.querySelectorAll("form").item(c - 1).length; i < len; i++) {
         if (document.querySelectorAll(`input[name='question${c}'`).item(i).checked) {
           co += 1;
         };
-        if (i == 3 && co == 0) {
+        if (i == len - 1 && co == 0) {
           v = false;
           break;
         };
