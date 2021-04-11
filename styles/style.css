@@ -129,7 +129,7 @@ label {
 }
 
 footer {
-  font-weight: 300;
+  font-size: smaller;
 }
 
 a {
@@ -168,7 +168,7 @@ a:hover, a:focus {
     transform: none;
   }
 
-  #final, footer {
+  #final {
     font-size: small;
   }
 }
