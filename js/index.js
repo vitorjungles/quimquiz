@@ -48,7 +48,7 @@ request.onload = () => {
     var Form = document.createElement("form");
     var P = document.createElement("p");
 
-    Span.id = "red2";
+    Span.classList = "red";
     Span.textContent = "*";
 
     Title.textContent = c + 1 < 10 ? `0${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"] : `${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"];
