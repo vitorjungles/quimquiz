@@ -153,6 +153,10 @@ a:hover, a:focus {
   .box h1 {
     font-size: medium;
   }
+  
+  .box:hover {
+    box-shadow: none;
+  }
 
   .material-icons-outlined.md-36 {
     font-size: 24px;
@@ -160,16 +164,11 @@ a:hover, a:focus {
     background: none;
   }
 
-  .material-icons-outlined.md-36:hover {
+  .material-icons-outlined.md-36:hover, .box:hover {
     transform: none;
-  }
-  
-  .box:hover {
-    transform: none;
-    box-shadow: none;
   }
 
-  footer {
+  #final, footer {
     font-size: small;
   }
 }
