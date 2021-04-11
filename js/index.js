@@ -122,7 +122,6 @@ request.onload = () => {
 
   if (Questions["quiz"]["type"] == "form") {
     document.querySelector("#validate").addEventListener('click', function Quiz() {
-      document.querySelector('#validate').addEventListener('click', Quiz, { once: true });
       if (SecondCheck && ThirdCheck) {
         location.reload();
       } else if (SecondCheck && !ThirdCheck) {
@@ -213,7 +212,7 @@ request.onload = () => {
           };
         };
       };
-    }, { once: true }) } else if (Questions["quiz"]["type"] == "one-question") {
+    }) } else if (Questions["quiz"]["type"] == "one-question") {
     for (let c = 0, length = Array.length; c < length; c++) {
       if (c != 0) {
         Array[c].hidden = true;
