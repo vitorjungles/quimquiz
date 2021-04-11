@@ -1,13 +1,12 @@
 var year = document.createElement("span");
+var request = new XMLHttpRequest();
+
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
 
-var request = new XMLHttpRequest();
 request.open('GET', "./json/data.json");
-
 request.responseType = 'json';
 request.send();
-
 request.onload = () => {
   const Questions = request.response;
   var QuestionsLength = 0;
