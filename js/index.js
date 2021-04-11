@@ -269,8 +269,8 @@ request.onload = () => {
       for (let i = 0, len = document.querySelectorAll("form").item(c - 1).length; i < len; i++) {
         if (document.querySelectorAll(`input[name='question${c}'`).item(i).checked) {
           co += 1;
-        };
-        if (i == len - 1 && co == 0) {
+          break;
+        } else if (i == len - 1 && co == 0) {
           v = false;
           break;
         };
