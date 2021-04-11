@@ -6,7 +6,7 @@
 
 body {
   background: linear-gradient(to right, #00b09b, #96c93d);
-  min-width: 260px;
+  min-width: 270px;
 }
 
 header {
@@ -53,7 +53,7 @@ form input {
 label {
   word-break: break-word;
   border-radius: 0.4rem;
-  padding: 0 0.4rem;
+  padding: 0 0 0 0.4rem;
 }
 
 .green {

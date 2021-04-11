@@ -120,105 +120,13 @@ request.onload = () => {
 
   InputLoop();
 
-  if (Questions["quiz"]["type"] == "form") {
-    document.querySelector("#validate").addEventListener('click', function Quiz() {
-      if (SecondCheck && ThirdCheck) {
-        location.reload();
-      } else if (SecondCheck && !ThirdCheck) {
-        clearInterval(QuizTime);
-
-        ThirdCheck = true;
-
-        var Old = document.createElement("h1");
-        var Old2 = document.querySelector("#validate");
-        var Old3 = document.querySelector("#txt");
-
-        Old.textContent = 'Analisando';
-        document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
-        Old2.value = 'Reiniciar quiz';
-        Old3.remove();
-  
-        var Interval = setInterval(Validation, 1000);
-
-        function Validation() {
-          co += 1;
-          if (co == 5) {
-            clearInterval(Interval);
-
-            var ValueOfQuiz = 0, Hits = 0, title, points;
-
-            for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
-              var label = document.querySelectorAll("label").item(c);
-              var input = document.querySelectorAll("input").item(c);
-
-              if (NumberOfInput == 0) {
-                NumberOfForms += 1;
-                title = document.querySelectorAll("h1").item(NumberOfForms);
-                points = document.querySelector(`#q${NumberOfForms}`);
-              };
-
-              NumberOfInput += 1;
-
-              if (CorrectQuestions.indexOf(c) != -1) {
-                ValueOfQuiz += CorrectQuestionsValue[0];
-
-                if (input.checked) {
-                  total += CorrectQuestionsValue[0];
-                  title.classList = 'green';
-                  points.textContent = `${CorrectQuestionsValue[0]}/${CorrectQuestionsValue[0]}`;
-                  Hits += 1;
-                };
-                label.classList = 'green-background';
-
-              } else if (input.checked) {
-                title.classList = 'red';
-                label.classList = 'red-background';
-                points.textContent = `0/${CorrectQuestionsValue[0]}`;
-              };
-
-              if (NumberOfInput == NumberOfAllAlternatives[0]) {
-                NumberOfInput = 0;
-                NumberOfAllAlternatives.splice(0, 1);
-                CorrectQuestionsValue.splice(0, 1);
-              };
-            };
-
-            var HitsElement = document.createElement("h1");
-            var Feedback = document.createElement("h1");
-            var TimeElement = document.createElement("h1");
-  
-            if (Hours < 10) {
-              Hours = `0${Hours}`;
-            };
-            if (Minutes < 10) {
-              Minutes = `0${Minutes}`;
-            };
-            if (Seconds < 10) {
-              Seconds = `0${Seconds}`;
-            };
-
-            TimeElement.id = 'time';
-            TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
-            HitsElement.id = 'txt3';
-            HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
-            Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
-
-            total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
-            total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
-  
-            [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1").item(document.querySelector("#final").querySelectorAll("h1").length - 1).after(array) });
-          } else {
-            Old.textContent += '.';
-          };
-        };
-      };
-    }) } else if (Questions["quiz"]["type"] == "one-question") {
+  if (Questions["quiz"]["type"] == "one-question") {
     for (let c = 0, length = Array.length; c < length; c++) {
       if (c != 0) {
         Array[c].hidden = true;
       };
     };
-    document.querySelector("#validate").hidden = document.querySelector("#txt").hidden = true;
+    document.querySelector("#validate").hidden = true;
 
     var Control = document.createElement("section");
     var BackIcon = document.createElement("span");
@@ -251,15 +159,102 @@ request.onload = () => {
     });
 
     [BackIcon, NextIcon].forEach(function (array) { Control.append(array) });
-  };
-  if (Questions["quiz"]["type"] == "one-question") {
     document.querySelector("main").firstChild.before(Control);
   };
 
   document.querySelector("main").firstChild.before(Section);
   document.querySelector("body").hidden = false;
 
-  console.log(Array);
+  document.querySelector("#validate").addEventListener('click', function Quiz() {
+    if (SecondCheck && ThirdCheck) {
+      location.reload();
+    } else if (SecondCheck && !ThirdCheck) {
+      clearInterval(QuizTime);
+
+      ThirdCheck = true;
+
+      var Old = document.createElement("h1");
+      var Old2 = document.querySelector("#validate");
+
+      Old.textContent = 'Analisando';
+      document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
+      Old2.value = 'Reiniciar quiz';
+
+      var Interval = setInterval(Validation, 1000);
+
+      function Validation() {
+        co += 1;
+        if (co == 5) {
+          clearInterval(Interval);
+
+          var ValueOfQuiz = 0, Hits = 0, title, points;
+
+          for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
+            var label = document.querySelectorAll("label").item(c);
+            var input = document.querySelectorAll("input").item(c);
+
+            if (NumberOfInput == 0) {
+              NumberOfForms += 1;
+              title = document.querySelectorAll("h1").item(NumberOfForms);
+              points = document.querySelector(`#q${NumberOfForms}`);
+            };
+
+            NumberOfInput += 1;
+
+            if (CorrectQuestions.indexOf(c) != -1) {
+              ValueOfQuiz += CorrectQuestionsValue[0];
+
+              if (input.checked) {
+                total += CorrectQuestionsValue[0];
+                title.classList = 'green';
+                points.textContent = `${CorrectQuestionsValue[0]}/${CorrectQuestionsValue[0]}`;
+                Hits += 1;
+              };
+              label.classList = 'green-background';
+
+            } else if (input.checked) {
+              title.classList = 'red';
+              label.classList = 'red-background';
+              points.textContent = `0/${CorrectQuestionsValue[0]}`;
+            };
+
+            if (NumberOfInput == NumberOfAllAlternatives[0]) {
+              NumberOfInput = 0;
+              NumberOfAllAlternatives.splice(0, 1);
+              CorrectQuestionsValue.splice(0, 1);
+            };
+          };
+
+          var HitsElement = document.createElement("h1");
+          var Feedback = document.createElement("h1");
+          var TimeElement = document.createElement("h1");
+
+          if (Hours < 10) {
+            Hours = `0${Hours}`;
+          };
+          if (Minutes < 10) {
+            Minutes = `0${Minutes}`;
+          };
+          if (Seconds < 10) {
+            Seconds = `0${Seconds}`;
+          };
+
+          TimeElement.id = 'time';
+          TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
+          HitsElement.id = 'txt3';
+          HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
+          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
+
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
+
+          [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1").item(document.querySelector("#final").querySelectorAll("h1").length - 1).after(array) });
+        } else {
+          Old.textContent += '.';
+        };
+      };
+    };
+  });
 
   function InputLoop(add = true) {
     for (let c = 1, length = Section.querySelectorAll("form").length + 1; c < length; c++) {
@@ -287,12 +282,7 @@ request.onload = () => {
       };
     };
 
-    console.log(v)
-
     if (v) {
-      var OldText = document.querySelector("#txt");
-      OldText.textContent = 'Pronto para envio';
-      OldText.classList = 'green';
       SecondCheck = true;
       InputLoop(false);
     };
