@@ -119,7 +119,7 @@ request.onload = () => {
 
   InputLoop();
 
-  if (Questions["quiz"]["type"] == "one-question") {
+  if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent)) {
     for (let c = 0, length = Array.length; c < length; c++) {
       if (c != 0) {
         Array[c].hidden = true;
