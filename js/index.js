@@ -164,7 +164,7 @@ request.onload = () => {
   };
 
   document.querySelector("main").firstChild.before(Section);
-  document.querySelector("body").hidden = false;
+  document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
   document.querySelector("#validate").addEventListener('click', function Quiz() {
     if (SecondCheck && ThirdCheck) {
