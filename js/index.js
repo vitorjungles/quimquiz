@@ -178,7 +178,7 @@ request.onload = () => {
       var Old2 = document.querySelector("#validate");
 
       Old.textContent = 'Analisando';
-      document.querySelectorAll("input").item(document.querySelectorAll("input").length - 1).after(Old);
+      document.querySelectorAll("input")[document.querySelectorAll("input").length - 1].after(Old);
       Old2.value = 'Reiniciar quiz';
 
       var Interval = setInterval(Validation, 1000);
@@ -191,12 +191,12 @@ request.onload = () => {
           var ValueOfQuiz = 0, Hits = 0, title, points;
 
           for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
-            var label = document.querySelectorAll("label").item(c);
-            var input = document.querySelectorAll("input").item(c);
+            var label = document.querySelectorAll("label")[c];
+            var input = document.querySelectorAll("input")[c];
 
             if (NumberOfInput == 0) {
               NumberOfForms += 1;
-              title = document.querySelectorAll("h1").item(NumberOfForms);
+              title = document.querySelectorAll("h1")[NumberOfForms];
               points = document.querySelector(`#q${NumberOfForms}`);
             };
 
@@ -249,7 +249,7 @@ request.onload = () => {
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
 
-          [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1").item(document.querySelector("#final").querySelectorAll("h1").length - 1).after(array) });
+          [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1")[document.querySelector("#final").querySelectorAll("h1").length - 1].after(array) });
         } else {
           Old.textContent += '.';
         };
@@ -259,8 +259,8 @@ request.onload = () => {
 
   function InputLoop(add = true) {
     for (let c = 1, length = Section.querySelectorAll("form").length + 1; c < length; c++) {
-      for (let i = 0, len = Section.querySelectorAll("form").item(c - 1).length; i < len; i++) {
-        add ? Section.querySelectorAll(`input[name='question${c}']`).item(i).addEventListener("click", Permission) : Section.querySelectorAll(`input[name='question${c}']`).item(i).removeEventListener("click", Permission);
+      for (let i = 0, len = Section.querySelectorAll("form")[c - 1].length; i < len; i++) {
+        add ? Section.querySelectorAll(`input[name='question${c}']`)[i].addEventListener("click", Permission) : Section.querySelectorAll(`input[name='question${c}']`)[i].removeEventListener("click", Permission);
       };
     };
   };
@@ -268,8 +268,8 @@ request.onload = () => {
   function Permission() {
     var v = true;
     for (let c = 1, length = document.querySelectorAll("form").length + 1; c < length; c++) {
-      for (let i = 0, len = document.querySelectorAll("form").item(c - 1).length; i < len; i++) {
-        if (document.querySelectorAll(`input[name='question${c}'`).item(i).checked) {
+      for (let i = 0, len = document.querySelectorAll("form")[c - 1].length; i < len; i++) {
+        if (document.querySelectorAll(`input[name='question${c}'`)[i].checked) {
           co += 1;
           break;
         } else if (i == len - 1 && co == 0) {
