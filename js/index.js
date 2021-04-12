@@ -159,6 +159,8 @@ request.onload = () => {
 
     [BackIcon, NextIcon].forEach(function (array) { Control.append(array) });
     document.querySelector("main").firstChild.before(Control);
+  } else {
+    Array.forEach(function (array) { array.classList += ' width-auto' });
   };
 
   document.querySelector("main").firstChild.before(Section);
