@@ -35,7 +35,7 @@ request.onload = () => {
   document.querySelector("meta[name='viewport']").after(TitlePage);
 
   for (let Key in Questions["quiz"]["questions"]) {
-    QuestionsLength += 1;
+    QuestionsLength++;
   };
 
   Shuffle(QuestionsArray, QuestionsLength);
@@ -57,7 +57,7 @@ request.onload = () => {
     Div.classList = "box";
 
     for (let Key in Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"]) {
-      AlternativesLength += 1;
+      AlternativesLength++;
     };
 
     Shuffle(AlternativesArray, AlternativesLength, true);
@@ -85,7 +85,7 @@ request.onload = () => {
       if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
         Form.append(Br);
       };
-      NumberOfInput += 1;
+      NumberOfInput++;
     };
     CorrectQuestionsValue.push(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"]);
     AlternativesArray = [];
@@ -103,14 +103,14 @@ request.onload = () => {
   var total = 0, co = 0, NumberOfForms = 0, SecondCheck = false, ThirdCheck = false;
   var Minutes = 0, Seconds = 0, Hours = 0;
   var QuizTime = setInterval(function () {
-    Seconds += 1;
+    Seconds++;
     if (Seconds == 60) {
       Seconds = 0;
-      Minutes += 1;
+      Minutes++;
     };
     if (Minutes == 60) {
       Minutes = 0;
-      Hours += 1;
+      Hours++;
     };
   }, 1000);
   NumberOfInput = 0;
@@ -184,7 +184,7 @@ request.onload = () => {
       var Interval = setInterval(Validation, 1000);
 
       function Validation() {
-        co += 1;
+        co++;
         if (co == 5) {
           clearInterval(Interval);
 
@@ -195,12 +195,12 @@ request.onload = () => {
             var input = document.querySelectorAll("input")[c];
 
             if (NumberOfInput == 0) {
-              NumberOfForms += 1;
+              NumberOfForms++;
               title = document.querySelectorAll("h1")[NumberOfForms];
               points = document.querySelector(`#q${NumberOfForms}`);
             };
 
-            NumberOfInput += 1;
+            NumberOfInput++;
 
             if (CorrectQuestions.indexOf(c) != -1) {
               ValueOfQuiz += CorrectQuestionsValue[0];
@@ -209,7 +209,7 @@ request.onload = () => {
                 total += CorrectQuestionsValue[0];
                 title.classList = 'green';
                 points.textContent = `${CorrectQuestionsValue[0]}/${CorrectQuestionsValue[0]}`;
-                Hits += 1;
+                Hits++;
               };
               label.classList = 'green-background';
 
@@ -270,7 +270,7 @@ request.onload = () => {
     for (let c = 1, length = document.querySelectorAll("form").length + 1; c < length; c++) {
       for (let i = 0, len = document.querySelectorAll("form")[c - 1].length; i < len; i++) {
         if (document.querySelectorAll(`input[name='question${c}'`)[i].checked) {
-          co += 1;
+          co++;
           break;
         } else if (i == len - 1 && co == 0) {
           v = false;
