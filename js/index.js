@@ -115,7 +115,9 @@ request.onload = () => {
   }, 1000);
   NumberOfInput = 0;
 
-  Array.forEach(function (array) { Section.append(array) });
+  Array.forEach(function (array) { 
+    Section.append(array);
+  });
 
   InputLoop();
 
@@ -157,10 +159,15 @@ request.onload = () => {
       };
     });
 
-    [BackIcon, NextIcon].forEach(function (array) { Control.append(array) });
+    [BackIcon, NextIcon].forEach(function (array) { 
+      Control.append(array);
+    });
+
     document.querySelector("main").firstChild.before(Control);
   } else {
-    Array.forEach(function (array) { array.classList += ' width-auto' });
+    Array.forEach(function (array) { 
+      array.classList += ' width-auto';
+    });
   };
 
   document.querySelector("main").firstChild.before(Section);
@@ -266,7 +273,9 @@ request.onload = () => {
 
           Old.hidden = false;
 
-          [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1")[document.querySelector("#final").querySelectorAll("h1").length - 1].after(array) });
+          [HitsElement, TimeElement, Feedback].forEach(function (array) { 
+            document.querySelector("#final").querySelectorAll("h1")[document.querySelector("#final").querySelectorAll("h1").length - 1].after(array);
+          });
         };
       };
     };
@@ -309,8 +318,9 @@ request.onload = () => {
   };
 
   function Shuffle(array, variable) {
+    var RandomInt = 0;
     while (array.length < variable) {
-      var RandomInt = Random(0, variable);
+      RandomInt = Random(0, variable);
       while (array.indexOf(RandomInt) != -1) {
         RandomInt = Random(0, variable);
       };
