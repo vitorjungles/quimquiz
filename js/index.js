@@ -177,16 +177,31 @@ request.onload = () => {
       var Old = document.createElement("h1");
       var Old2 = document.querySelector("#validate");
 
-      Old.textContent = 'Analisando';
+      Old.hidden = true;
       document.querySelectorAll("input")[document.querySelectorAll("input").length - 1].after(Old);
       Old2.value = 'Reiniciar quiz';
 
       var Interval = setInterval(Validation, 1000);
+      var BarProgress = document.createElement("progress");
+      var FirstBr = document.createElement("br");
+      var SecondBr = document.createElement("br");
+
+      BarProgress.value = 0;
+      BarProgress.max = 100;
+
+      [FirstBr, SecondBr, BarProgress].forEach(function (array) {
+        document.querySelector("#final").append(array);
+      });
 
       function Validation() {
         co++;
+        BarProgress.value += 20;
         if (co == 5) {
           clearInterval(Interval);
+
+          [FirstBr, SecondBr, BarProgress].forEach(function (array) {
+            array.remove();
+          });
 
           var ValueOfQuiz = 0, Hits = 0, title, points;
 
@@ -249,9 +264,9 @@ request.onload = () => {
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
 
+          Old.hidden = false;
+
           [HitsElement, TimeElement, Feedback].forEach(function (array) { document.querySelector("#final").querySelectorAll("h1")[document.querySelector("#final").querySelectorAll("h1").length - 1].after(array) });
-        } else {
-          Old.textContent += '.';
         };
       };
     };
