@@ -13,6 +13,18 @@ header {
   margin-bottom: 14rem;
 }
 
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 10px;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(61, 60, 66);
+  border-radius: 3px;
+}
+
 #questions {
   margin-bottom: 3rem;
 }
