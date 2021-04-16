@@ -132,6 +132,8 @@ request.onload = () => {
     var Control = document.createElement("section");
     var BackIcon = document.createElement("span");
     var NextIcon = document.createElement("span");
+    var NextDiv = document.createElement("div");
+    var BackDiv = document.createElement("div");
 
     Control.id = 'control';
 
@@ -141,25 +143,34 @@ request.onload = () => {
       if (Array[Index + 1] != undefined) {
         if (Array[Index + 2] == undefined) {
           document.querySelector("#validate").hidden = false;
+          NextDiv.hidden = true;
         };
         Array[Index].hidden = true;
         Array[Index += 1].hidden = false;
+        console.log(Index + 1);
       };
+      BackDiv.hidden = Array[Index - 1] == undefined ? true : false;
     });
 
     BackIcon.classList = 'material-icons-outlined md-36 back';
     BackIcon.textContent = 'arrow_back_ios';
+    BackDiv.hidden = true;
     BackIcon.addEventListener('click', function Back() {
       if (Array[Index - 1] != undefined) {
         if (document.querySelector("#validate").hidden == false) {
           document.querySelector("#validate").hidden = true;
+          NextDiv.hidden = false;
         };
         Array[Index].hidden = true;
         Array[Index -= 1].hidden = false;
       };
+      BackDiv.hidden = Array[Index - 1] == undefined ? true : false;
     });
 
-    [BackIcon, NextIcon].forEach(function (array) { 
+    NextDiv.append(NextIcon);
+    BackDiv.append(BackIcon);
+
+    [BackDiv, NextDiv].forEach(function (array) { 
       Control.append(array);
     });
 
