@@ -100,7 +100,7 @@ request.onload = () => {
     Array.push(Div);
   };
 
-  var total = 0, co = 0, NumberOfForms = 0, SecondCheck = false, ThirdCheck = false;
+  var total = 0, co = 0, NumberOfForms = 0;
   var Minutes = 0, Seconds = 0, Hours = 0;
   var QuizTime = setInterval(function () {
     Seconds++;
@@ -118,8 +118,6 @@ request.onload = () => {
   Array.forEach(function (array) { 
     Section.append(array);
   });
-
-  InputLoop();
 
   if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent)) {
     for (let c = 0, length = Array.length; c < length; c++) {
@@ -147,7 +145,6 @@ request.onload = () => {
         };
         Array[Index].hidden = true;
         Array[Index += 1].hidden = false;
-        console.log(Index + 1);
       };
       BackDiv.hidden = Array[Index - 1] == undefined ? true : false;
     });
@@ -185,12 +182,10 @@ request.onload = () => {
   document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
   document.querySelector("#validate").addEventListener('click', function Quiz() {
-    if (SecondCheck && ThirdCheck) {
+    if (Permission() && document.querySelector("#validate").value != 'Enviar') {
       location.reload();
-    } else if (SecondCheck && !ThirdCheck) {
+    } else if (Permission()) {
       clearInterval(QuizTime);
-
-      ThirdCheck = true;
 
       var Old = document.createElement("h1");
       var Old2 = document.querySelector("#validate");
@@ -292,36 +287,20 @@ request.onload = () => {
     };
   });
 
-  function InputLoop(add = true) {
-    for (let c = 1, length = Section.querySelectorAll("form").length + 1; c < length; c++) {
-      for (let i = 0, len = Section.querySelectorAll("form")[c - 1].length; i < len; i++) {
-        add ? Section.querySelectorAll(`input[name='question${c}']`)[i].addEventListener("click", Permission) : Section.querySelectorAll(`input[name='question${c}']`)[i].removeEventListener("click", Permission);
-      };
-    };
-  };
-
   function Permission() {
-    var v = true;
     for (let c = 1, length = document.querySelectorAll("form").length + 1; c < length; c++) {
       for (let i = 0, len = document.querySelectorAll("form")[c - 1].length; i < len; i++) {
         if (document.querySelectorAll(`input[name='question${c}'`)[i].checked) {
           co++;
           break;
         } else if (i == len - 1 && co == 0) {
-          v = false;
-          break;
+          return false;
         };
       };
       co = 0;
-      if (v == false) {
-        break;
-      };
     };
 
-    if (v) {
-      SecondCheck = true;
-      InputLoop(false);
-    };
+    return true;
   };
 
   function Random(min, max) {
