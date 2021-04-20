@@ -119,7 +119,7 @@ request.onload = () => {
     Section.append(array);
   });
 
-  if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent)) {
+  if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
     for (let c = 0, length = Array.length; c < length; c++) {
       if (c != 0) {
         Array[c].hidden = true;
@@ -275,7 +275,7 @@ request.onload = () => {
           Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
 
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem! :)' : Feedback.textContent = 'Não foi desta vez... :(';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem!' : Feedback.textContent = 'Não foi desta vez...';
 
           Old.hidden = false;
 
