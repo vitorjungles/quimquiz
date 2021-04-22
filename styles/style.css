@@ -8,16 +8,16 @@
   width: 0.6rem;
   height: 0.6rem;
   margin-right: 10px;
-  border-radius: 3px;
+  border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgb(61, 60, 66);
-  border-radius: 3px;
+  border-radius: 1rem;
 }
 
 body {
-  background-color: rgba(33, 161, 165, 0.74);
+  background-color: rgba(37, 202, 125, 0.74);
   min-width: 260px;
 }
 
@@ -143,10 +143,6 @@ label {
 
 footer {
   font-size: smaller;
-}
-
-a {
-  transform: scale(1.03);
 }
 
 a:hover, a:focus {
