@@ -74,8 +74,7 @@ request.onload = () => {
       Label.textContent = `${String.fromCharCode(97 + i)}) ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${AlternativesArray[i]}`];
       Label.htmlFor = `q${c + 1}-${i + 1}`;
 
-      Form.append(Input);
-      Form.append(Label);
+      Form.append(Input, Label);
       if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
         Form.append(Br);
       };
@@ -83,13 +82,11 @@ request.onload = () => {
     };
     CorrectQuestionsValue.push(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"]);
     AlternativesArray = [];
-    AlternativesLength = 0;
 
     P.id = `q${c + 1}`;
     P.textContent = Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"] + " pontos";
 
-    Div.append(Form);
-    Div.append(P);
+    Div.append(Form, P);
 
     Array.push(Div);
   };
@@ -163,9 +160,7 @@ request.onload = () => {
     NextDiv.append(NextIcon);
     BackDiv.append(BackIcon);
 
-    [BackDiv, NextDiv].forEach(function (array) { 
-      Control.append(array);
-    });
+    Control.append(BackDiv, NextDiv);
 
     document.querySelector("main").firstChild.before(Control);
   } else {
@@ -193,9 +188,7 @@ request.onload = () => {
       BarProgress.value = 0;
       BarProgress.max = 100;
 
-      [FirstBr, SecondBr, BarProgress].forEach(function (array) {
-        document.querySelector("#final").append(array);
-      });
+      document.querySelector("#final").append(FirstBr, SecondBr, BarProgress);
 
       function Validation() {
         counter++;
@@ -268,9 +261,7 @@ request.onload = () => {
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Points.classList = HitsElement.classList = 'darkblue' : Points.classList = HitsElement.classList = 'red';
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem!' : Feedback.textContent = 'Não foi desta vez...';
 
-          [Points, HitsElement, TimeElement, Feedback].forEach(function (array) { 
-            document.querySelector("#final").appendChild(array);
-          });
+          document.querySelector("#final").append(Points, HitsElement, TimeElement, Feedback);
         };
       };
     };
