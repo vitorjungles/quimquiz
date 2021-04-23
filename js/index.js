@@ -96,7 +96,7 @@ request.onload = () => {
 
   var ValidationButton = document.querySelector("#validate");
 
-  var total = 0, co = 0, NumberOfForms = 0;
+  var total = 0, counter = 0, NumberOfForms = 0;
   var Minutes = 0, Seconds = 0, Hours = 0;
   var QuizTime = setInterval(function () {
     Seconds++;
@@ -198,9 +198,9 @@ request.onload = () => {
       });
 
       function Validation() {
-        co++;
+        counter++;
         BarProgress.value += 20;
-        if (co == 5) {
+        if (counter == 5) {
           clearInterval(Interval);
 
           [FirstBr, SecondBr, BarProgress].forEach(function (array) {
@@ -280,13 +280,13 @@ request.onload = () => {
     for (let c = 1, length = document.querySelectorAll("form").length + 1; c < length; c++) {
       for (let i = 0, len = document.querySelectorAll("form")[c - 1].length; i < len; i++) {
         if (document.querySelectorAll(`input[name='question${c}'`)[i].checked) {
-          co++;
+          counter++;
           break;
-        } else if (i == len - 1 && co == 0) {
+        } else if (i == len - 1 && counter == 0) {
           return false;
         };
       };
-      co = 0;
+      counter = 0;
     };
     return true;
   };
