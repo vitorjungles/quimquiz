@@ -9,7 +9,7 @@ request.responseType = 'json';
 request.send();
 request.onload = () => {
   const Questions = request.response;
-  var QuestionsLength = 0;
+  var QuestionsLength = Object.keys(Questions["quiz"]["questions"]).length;
   var QuestionsArray = [];
   var AlternativesLength = 0;
   var AlternativesArray = [];
@@ -34,10 +34,6 @@ request.onload = () => {
   document.querySelector("body").firstChild.before(Header);
   document.querySelector("meta[name='viewport']").after(TitlePage);
 
-  for (let Key in Questions["quiz"]["questions"]) {
-    QuestionsLength++;
-  };
-
   Shuffle(QuestionsArray, QuestionsLength);
 
   for (let c = 0, length = QuestionsArray.length; c < length; c++) {
@@ -56,9 +52,7 @@ request.onload = () => {
     Div.append(Title);
     Div.classList = "box";
 
-    for (let Key in Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"]) {
-      AlternativesLength++;
-    };
+    AlternativesLength = Object.keys(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"]).length;
 
     Shuffle(AlternativesArray, AlternativesLength, true);
 
@@ -100,6 +94,8 @@ request.onload = () => {
     Array.push(Div);
   };
 
+  var ValidationButton = document.querySelector("#validate");
+
   var total = 0, co = 0, NumberOfForms = 0;
   var Minutes = 0, Seconds = 0, Hours = 0;
   var QuizTime = setInterval(function () {
@@ -125,7 +121,7 @@ request.onload = () => {
         Array[c].hidden = true;
       };
     };
-    document.querySelector("#validate").hidden = true;
+    ValidationButton.hidden = true;
 
     var Control = document.createElement("section");
     var BackIcon = document.createElement("span");
@@ -140,7 +136,7 @@ request.onload = () => {
     NextIcon.addEventListener('click', function Next() {
       if (Array[Index + 1] != undefined) {
         if (Array[Index + 2] == undefined) {
-          document.querySelector("#validate").hidden = false;
+          ValidationButton.hidden = false;
           NextDiv.hidden = true;
         };
         Array[Index].hidden = true;
@@ -154,8 +150,8 @@ request.onload = () => {
     BackDiv.hidden = true;
     BackIcon.addEventListener('click', function Back() {
       if (Array[Index - 1] != undefined) {
-        if (document.querySelector("#validate").hidden == false) {
-          document.querySelector("#validate").hidden = true;
+        if (ValidationButton.hidden == false) {
+          ValidationButton.hidden = true;
           NextDiv.hidden = false;
         };
         Array[Index].hidden = true;
@@ -181,18 +177,13 @@ request.onload = () => {
   document.querySelector("main").firstChild.before(Section);
   document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
-  document.querySelector("#validate").addEventListener('click', function Quiz() {
-    if (Permission() && document.querySelector("#validate").value != 'Enviar') {
+  ValidationButton.addEventListener('click', function Quiz() {
+    if (Permission() && ValidationButton.value != 'Enviar') {
       location.reload();
     } else if (Permission()) {
       clearInterval(QuizTime);
 
-      var Old = document.createElement("h1");
-      var Old2 = document.querySelector("#validate");
-
-      Old.hidden = true;
-      document.querySelectorAll("input")[document.querySelectorAll("input").length - 1].after(Old);
-      Old2.value = 'Reiniciar quiz';
+      ValidationButton.value = 'Reiniciar quiz';
 
       var Interval = setInterval(Validation, 1000);
       var BarProgress = document.createElement("progress");
@@ -255,6 +246,7 @@ request.onload = () => {
           };
 
           var HitsElement = document.createElement("h1");
+          var Points = document.createElement("h1");
           var Feedback = document.createElement("h1");
           var TimeElement = document.createElement("h1");
 
@@ -270,17 +262,14 @@ request.onload = () => {
 
           TimeElement.id = 'time';
           TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
-          HitsElement.id = 'txt3';
           HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
-          Old.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
+          Points.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
 
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Old.classList = HitsElement.classList = 'darkblue' : Old.classList = HitsElement.classList = 'red';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Points.classList = HitsElement.classList = 'darkblue' : Points.classList = HitsElement.classList = 'red';
           total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem!' : Feedback.textContent = 'Não foi desta vez...';
 
-          Old.hidden = false;
-
-          [HitsElement, TimeElement, Feedback].forEach(function (array) { 
-            document.querySelector("#final").querySelectorAll("h1")[document.querySelector("#final").querySelectorAll("h1").length - 1].after(array);
+          [Points, HitsElement, TimeElement, Feedback].forEach(function (array) { 
+            document.querySelector("#final").appendChild(array);
           });
         };
       };
@@ -299,7 +288,6 @@ request.onload = () => {
       };
       co = 0;
     };
-
     return true;
   };
 
