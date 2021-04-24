@@ -21,12 +21,8 @@ body {
   min-width: 260px;
 }
 
-header {
-  margin-bottom: 14rem;
-}
-
 #questions {
-  margin-bottom: 3rem;
+  margin: 14rem 0 3rem 0;
 }
 
 .box {
@@ -61,8 +57,16 @@ header {
   cursor: pointer;
 }
 
+.cursor-default {
+  cursor: default;
+}
+
 form input {
   margin-top: 2rem;
+}
+
+form input:disabled:checked {
+  filter: brightness(0.6);
 }
 
 label {

@@ -61,7 +61,6 @@ request.onload = () => {
     for (let i = 0, len = AlternativesArray.length; i < len; i++) {
       var Label = document.createElement("label");
       var Input = document.createElement("input");
-      var Br = document.createElement("br");
 
       if (AlternativesArray[i] == Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["correct"]) {
         CorrectQuestions.push(NumberOfInput);
@@ -75,7 +74,8 @@ request.onload = () => {
       Label.htmlFor = `q${c + 1}-${i + 1}`;
 
       Form.append(Input, Label);
-      if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) { 
+      if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) {
+        var Br = document.createElement("br");
         Form.append(Br);
       };
       NumberOfInput++;
@@ -113,10 +113,8 @@ request.onload = () => {
   });
 
   if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
-    for (let c = 0, length = Array.length; c < length; c++) {
-      if (c != 0) {
-        Array[c].hidden = true;
-      };
+    for (let c = 1, length = Array.length; c < length; c++) {
+      Array[c].hidden = true;
     };
     ValidationButton.hidden = true;
 
@@ -164,7 +162,7 @@ request.onload = () => {
 
     document.querySelector("main").firstChild.before(Control);
   } else {
-    Array.forEach(function (array) { 
+    Array.forEach(function (array) {
       array.classList += ' width-auto';
     });
   };
@@ -206,6 +204,9 @@ request.onload = () => {
             var label = document.querySelectorAll("label")[c];
             var input = document.querySelectorAll("input")[c];
 
+            input.classList = 'cursor-default';
+            input.disabled = true;
+
             if (NumberOfInput == 0) {
               NumberOfForms++;
               title = document.querySelectorAll("h1")[NumberOfForms];
@@ -233,8 +234,9 @@ request.onload = () => {
 
             if (NumberOfInput == NumberOfAllAlternatives[0]) {
               NumberOfInput = 0;
-              NumberOfAllAlternatives.splice(0, 1);
-              CorrectQuestionsValue.splice(0, 1);
+              [NumberOfAllAlternatives, CorrectQuestionsValue].forEach(element => {
+                element.splice(0, 1)
+              });
             };
           };
 
@@ -258,8 +260,13 @@ request.onload = () => {
           HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
           Points.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
 
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Points.classList = HitsElement.classList = 'darkblue' : Points.classList = HitsElement.classList = 'red';
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? Feedback.textContent = 'Parabéns! Mandou bem!' : Feedback.textContent = 'Não foi desta vez...';
+          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? (
+            Points.classList = HitsElement.classList = 'darkblue',
+            Feedback.textContent = 'Parabéns! Mandou bem!'
+          ) : (
+            Points.classList = HitsElement.classList = 'red', 
+            Feedback.textContent = 'Não foi desta vez...'
+          );
 
           document.querySelector("#final").append(Points, HitsElement, TimeElement, Feedback);
         };
