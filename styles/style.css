@@ -149,8 +149,8 @@ a:hover, a:focus {
 }
 
 @media screen and (max-width: 600px) {
-  header {
-    margin-bottom: 6rem;
+  #questions {
+    margin-top: 6rem;
   }
 
   .box {
