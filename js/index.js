@@ -17,7 +17,7 @@ request.onload = () => {
   var NumberOfAllAlternatives = [];
   var CorrectQuestions = [];
   var CorrectQuestionsValue = [];
-  var Array = [];
+  var divArray = [];
   var Index = 0;
 
   var Header = document.createElement("header");
@@ -88,7 +88,7 @@ request.onload = () => {
 
     Div.append(Form, P);
 
-    Array.push(Div);
+    divArray.push(Div);
   };
 
   var ValidationButton = document.querySelector("#validate");
@@ -108,13 +108,13 @@ request.onload = () => {
   }, 1000);
   NumberOfInput = 0;
 
-  Array.forEach(element => { 
+  divArray.forEach(element => { 
     Section.append(element);
   });
 
   if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
     for (let c = 1, length = Array.length; c < length; c++) {
-      Array[c].hidden = true;
+      divArray[c].hidden = true;
     };
     ValidationButton.hidden = true;
 
@@ -144,15 +144,15 @@ request.onload = () => {
     BackIcon.textContent = 'arrow_back_ios';
     BackDiv.hidden = true;
     BackIcon.addEventListener('click', () => {
-      if (Array[Index - 1]) {
+      if (divArray[Index - 1]) {
         if (!ValidationButton.hidden) {
           ValidationButton.hidden = true;
           NextDiv.hidden = false;
         };
-        Array[Index].hidden = true;
-        Array[Index -= 1].hidden = false;
+        divArray[Index].hidden = true;
+        divArray[Index -= 1].hidden = false;
       };
-      BackDiv.hidden = !Array[Index - 1] ? true : false;
+      BackDiv.hidden = !divArray[Index - 1] ? true : false;
     });
 
     NextDiv.append(NextIcon);
@@ -160,14 +160,14 @@ request.onload = () => {
 
     Control.append(BackDiv, NextDiv);
 
-    document.querySelector("#final").insertAdjacentElement('beforebegin', Control);
+    document.querySelector("header").insertAdjacentElement('afterend', Control);
   } else {
-    Array.forEach(element => {
+    divArray.forEach(element => {
       element.classList.add('width-auto');
     });
   };
 
-  document.querySelector("#final").insertAdjacentElement('beforebegin', Section);
+  document.querySelector("header").insertAdjacentElement('afterend', Section);
   document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
   ValidationButton.addEventListener('click', () => {
