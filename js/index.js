@@ -31,7 +31,7 @@ request.onload = () => {
 
   Header.append(H1);
 
-  document.querySelector("body").firstChild.before(Header);
+  document.querySelector("main").insertAdjacentElement('afterbegin', Header);
   document.querySelector("meta[name='viewport']").after(TitlePage);
 
   Shuffle(QuestionsArray, QuestionsLength);
@@ -47,7 +47,7 @@ request.onload = () => {
     Span.textContent = "*";
 
     Title.textContent = c + 1 < 10 ? `0${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"] : `${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"];
-    Title.firstChild.after(Span);
+    Title.appendChild(Span);
 
     Div.append(Title);
     Div.classList = "box";
@@ -95,7 +95,7 @@ request.onload = () => {
 
   var total = 0, counter = 0, NumberOfForms = 0;
   var Minutes = 0, Seconds = 0, Hours = 0;
-  var QuizTime = setInterval(function () {
+  var QuizTime = setInterval(() => {
     Seconds++;
     if (Seconds == 60) {
       Seconds = 0;
@@ -108,8 +108,8 @@ request.onload = () => {
   }, 1000);
   NumberOfInput = 0;
 
-  Array.forEach(function (array) { 
-    Section.append(array);
+  Array.forEach(element => { 
+    Section.append(element);
   });
 
   if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
@@ -128,31 +128,31 @@ request.onload = () => {
 
     NextIcon.classList = 'material-icons-outlined md-36 next';
     NextIcon.textContent = 'arrow_forward_ios';
-    NextIcon.addEventListener('click', function Next() {
-      if (Array[Index + 1] != undefined) {
-        if (Array[Index + 2] == undefined) {
+    NextIcon.addEventListener('click', () => {
+      if (Array[Index + 1]) {
+        if (!Array[Index + 2]) {
           ValidationButton.hidden = false;
           NextDiv.hidden = true;
         };
         Array[Index].hidden = true;
         Array[Index += 1].hidden = false;
       };
-      BackDiv.hidden = Array[Index - 1] == undefined ? true : false;
+      BackDiv.hidden = !Array[Index - 1] ? true : false;
     });
 
     BackIcon.classList = 'material-icons-outlined md-36 back';
     BackIcon.textContent = 'arrow_back_ios';
     BackDiv.hidden = true;
-    BackIcon.addEventListener('click', function Back() {
-      if (Array[Index - 1] != undefined) {
-        if (ValidationButton.hidden == false) {
+    BackIcon.addEventListener('click', () => {
+      if (Array[Index - 1]) {
+        if (!ValidationButton.hidden) {
           ValidationButton.hidden = true;
           NextDiv.hidden = false;
         };
         Array[Index].hidden = true;
         Array[Index -= 1].hidden = false;
       };
-      BackDiv.hidden = Array[Index - 1] == undefined ? true : false;
+      BackDiv.hidden = !Array[Index - 1] ? true : false;
     });
 
     NextDiv.append(NextIcon);
@@ -160,17 +160,17 @@ request.onload = () => {
 
     Control.append(BackDiv, NextDiv);
 
-    document.querySelector("main").firstChild.before(Control);
+    document.querySelector("#final").insertAdjacentElement('beforebegin', Control);
   } else {
-    Array.forEach(function (array) {
-      array.classList += ' width-auto';
+    Array.forEach(element => {
+      element.classList.add('width-auto');
     });
   };
 
-  document.querySelector("main").firstChild.before(Section);
+  document.querySelector("#final").insertAdjacentElement('beforebegin', Section);
   document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
-  ValidationButton.addEventListener('click', function Quiz() {
+  ValidationButton.addEventListener('click', () => {
     if (Permission() && ValidationButton.value != 'Enviar') {
       location.reload();
     } else if (Permission()) {
@@ -194,8 +194,8 @@ request.onload = () => {
         if (counter == 5) {
           clearInterval(Interval);
 
-          [FirstBr, SecondBr, BarProgress].forEach(function (array) {
-            array.remove();
+          [FirstBr, SecondBr, BarProgress].forEach(element => {
+            element.remove();
           });
 
           var ValueOfQuiz = 0, Hits = 0, title, points;
