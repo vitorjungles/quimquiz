@@ -113,7 +113,7 @@ request.onload = () => {
   });
 
   if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
-    for (let c = 1, length = Array.length; c < length; c++) {
+    for (let c = 1, length = divArray.length; c < length; c++) {
       divArray[c].hidden = true;
     };
     ValidationButton.hidden = true;
@@ -129,15 +129,15 @@ request.onload = () => {
     NextIcon.classList = 'material-icons-outlined md-36 next';
     NextIcon.textContent = 'arrow_forward_ios';
     NextIcon.addEventListener('click', () => {
-      if (Array[Index + 1]) {
-        if (!Array[Index + 2]) {
+      if (divArray[Index + 1]) {
+        if (!divArray[Index + 2]) {
           ValidationButton.hidden = false;
           NextDiv.hidden = true;
         };
-        Array[Index].hidden = true;
-        Array[Index += 1].hidden = false;
+        divArray[Index].hidden = true;
+        divArray[Index += 1].hidden = false;
       };
-      BackDiv.hidden = !Array[Index - 1] ? true : false;
+      BackDiv.hidden = !divArray[Index - 1] ? true : false;
     });
 
     BackIcon.classList = 'material-icons-outlined md-36 back';
