@@ -1,5 +1,5 @@
-var year = document.createElement("span");
-var request = new XMLHttpRequest();
+let year = document.createElement("span");
+let request = new XMLHttpRequest();
 
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector("#copyright").after(year);
@@ -8,267 +8,267 @@ request.open('GET', "./json/data.json");
 request.responseType = 'json';
 request.send();
 request.onload = () => {
-  const Questions = request.response;
-  var QuestionsLength = Object.keys(Questions["quiz"]["questions"]).length;
-  var QuestionsArray = [];
-  var AlternativesLength = 0;
-  var AlternativesArray = [];
-  var NumberOfInput = 0;
-  var NumberOfAllAlternatives = [];
-  var CorrectQuestions = [];
-  var CorrectQuestionsValue = [];
-  var divArray = [];
-  var Index = 0;
+  const questions = request.response;
+  let questionsLength = Object.keys(questions["quiz"]["questions"]).length;
+  let questionsArray = [];
+  let alternativesLength = 0;
+  let alternativesArray = [];
+  let numberOfInput = 0;
+  let numberOfAllAlternatives = [];
+  let correctQuestions = [];
+  let correctQuestionsValue = [];
+  let divArray = [];
+  let index = 0;
 
-  var Header = document.createElement("header");
-  var H1 = document.createElement("h1")
-  var TitlePage = document.createElement("title");
-  var Section = document.createElement("section");
+  let header = document.createElement("header");
+  let h1 = document.createElement("h1")
+  let titlePage = document.createElement("title");
+  let section = document.createElement("section");
 
-  Section.id = 'questions';
+  section.id = 'questions';
 
-  TitlePage.textContent = H1.textContent = Questions["quiz"]["title"];
+  titlePage.textContent = h1.textContent = questions["quiz"]["title"];
 
-  Header.append(H1);
+  header.append(h1);
 
-  document.querySelector("main").insertAdjacentElement('afterbegin', Header);
-  document.querySelector("meta[name='viewport']").after(TitlePage);
+  document.querySelector("main").insertAdjacentElement('afterbegin', header);
+  document.querySelector("meta[name='viewport']").after(titlePage);
 
-  Shuffle(QuestionsArray, QuestionsLength);
+  Shuffle(questionsArray, questionsLength);
 
-  for (let c = 0, length = QuestionsArray.length; c < length; c++) {
-    var Div = document.createElement("div");
-    var Title = document.createElement("h1");
-    var Span = document.createElement("span");
-    var Form = document.createElement("form");
-    var P = document.createElement("p");
+  for (let c = 0, length = questionsArray.length; c < length; c++) {
+    let div = document.createElement("div");
+    let title = document.createElement("h1");
+    let span = document.createElement("span");
+    let form = document.createElement("form");
+    let p = document.createElement("p");
 
-    Span.classList = "red";
-    Span.textContent = "*";
+    span.classList = "red";
+    span.textContent = "*";
 
-    Title.textContent = c + 1 < 10 ? `0${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"] : `${c + 1}. ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["title"];
-    Title.appendChild(Span);
+    title.textContent = c + 1 < 10 ? `0${c + 1}. ` + questions["quiz"]["questions"][`${questionsArray[c]}`]["title"] : `${c + 1}. ` + questions["quiz"]["questions"][`${questionsArray[c]}`]["title"];
+    title.appendChild(span);
 
-    Div.append(Title);
-    Div.classList = "box";
+    div.append(title);
+    div.classList = "box";
 
-    AlternativesLength = Object.keys(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"]).length;
+    alternativesLength = Object.keys(questions["quiz"]["questions"][`${questionsArray[c]}`]["alternatives"]).length;
 
-    Shuffle(AlternativesArray, AlternativesLength, true);
+    Shuffle(alternativesArray, alternativesLength, true);
 
-    NumberOfAllAlternatives.push(AlternativesLength);
+    numberOfAllAlternatives.push(alternativesLength);
 
-    for (let i = 0, len = AlternativesArray.length; i < len; i++) {
-      var Label = document.createElement("label");
-      var Input = document.createElement("input");
+    for (let i = 0, len = alternativesArray.length; i < len; i++) {
+      let label = document.createElement("label");
+      let input = document.createElement("input");
 
-      if (AlternativesArray[i] == Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["correct"]) {
-        CorrectQuestions.push(NumberOfInput);
+      if (alternativesArray[i] == questions["quiz"]["questions"][`${questionsArray[c]}`]["correct"]) {
+        correctQuestions.push(numberOfInput);
       };
 
-      Input.type = "radio";
-      Input.name = `question${c + 1}`;
-      Input.id = `q${c + 1}-${i + 1}`;
+      input.type = "radio";
+      input.name = `question${c + 1}`;
+      input.id = `q${c + 1}-${i + 1}`;
 
-      Label.textContent = `${String.fromCharCode(97 + i)}) ` + Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${AlternativesArray[i]}`];
-      Label.htmlFor = `q${c + 1}-${i + 1}`;
+      label.textContent = `${String.fromCharCode(97 + i)}) ` + questions["quiz"]["questions"][`${questionsArray[c]}`]["alternatives"][`${alternativesArray[i]}`];
+      label.htmlFor = `q${c + 1}-${i + 1}`;
 
-      Form.append(Input, Label);
-      if (Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["alternatives"][`${i + 1}`] != undefined) {
-        var Br = document.createElement("br");
-        Form.append(Br);
+      form.append(input, label);
+      if (questions["quiz"]["questions"][`${questionsArray[c]}`]["alternatives"][`${i + 1}`]) {
+        let br = document.createElement("br");
+        form.append(br);
       };
-      NumberOfInput++;
+      numberOfInput++;
     };
-    CorrectQuestionsValue.push(Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"]);
-    AlternativesArray = [];
+    correctQuestionsValue.push(questions["quiz"]["questions"][`${questionsArray[c]}`]["value"]);
+    alternativesArray = [];
 
-    P.id = `q${c + 1}`;
-    P.textContent = Questions["quiz"]["questions"][`${QuestionsArray[c]}`]["value"] + " pontos";
+    p.id = `q${c + 1}`;
+    p.textContent = questions["quiz"]["questions"][`${questionsArray[c]}`]["value"] + " pontos";
 
-    Div.append(Form, P);
+    div.append(form, p);
 
-    divArray.push(Div);
+    divArray.push(div);
   };
 
-  var ValidationButton = document.querySelector("#validate");
+  let validationButton = document.querySelector("#validate");
 
-  var total = 0, counter = 0, NumberOfForms = 0;
-  var Minutes = 0, Seconds = 0, Hours = 0;
-  var QuizTime = setInterval(() => {
-    Seconds++;
-    if (Seconds == 60) {
-      Seconds = 0;
-      Minutes++;
+  let total = 0, counter = 0, numberOfForms = 0;
+  let minutes = 0, seconds = 0, hours = 0;
+  let quizTime = setInterval(() => {
+    seconds++;
+    if (seconds == 60) {
+      seconds = 0;
+      minutes++;
     };
-    if (Minutes == 60) {
-      Minutes = 0;
-      Hours++;
+    if (minutes == 60) {
+      minutes = 0;
+      hours++;
     };
   }, 1000);
-  NumberOfInput = 0;
+  numberOfInput = 0;
 
   divArray.forEach(element => { 
-    Section.append(element);
+    section.append(element);
   });
 
-  if (Questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
+  if (questions["quiz"]["type"] == "one-question" && !/(Phone|Android|BB10|Tablet|iPad)/.test(navigator.userAgent) && window.innerWidth >= 330) {
     for (let c = 1, length = divArray.length; c < length; c++) {
       divArray[c].hidden = true;
     };
-    ValidationButton.hidden = true;
+    validationButton.hidden = true;
 
-    var Control = document.createElement("section");
-    var BackIcon = document.createElement("span");
-    var NextIcon = document.createElement("span");
-    var NextDiv = document.createElement("div");
-    var BackDiv = document.createElement("div");
+    let control = document.createElement("section");
+    let backIcon = document.createElement("span");
+    let nextIcon = document.createElement("span");
+    let nextDiv = document.createElement("div");
+    let backDiv = document.createElement("div");
 
-    Control.id = 'control';
+    control.id = 'control';
 
-    NextIcon.classList = 'material-icons-outlined md-36 next';
-    NextIcon.textContent = 'arrow_forward_ios';
-    NextIcon.addEventListener('click', () => {
-      if (divArray[Index + 1]) {
-        if (!divArray[Index + 2]) {
-          ValidationButton.hidden = false;
-          NextDiv.hidden = true;
+    nextIcon.classList = 'material-icons-outlined md-36 next';
+    nextIcon.textContent = 'arrow_forward_ios';
+    nextIcon.addEventListener('click', () => {
+      if (divArray[index + 1]) {
+        if (!divArray[index + 2]) {
+          validationButton.hidden = false;
+          nextDiv.hidden = true;
         };
-        divArray[Index].hidden = true;
-        divArray[Index += 1].hidden = false;
+        divArray[index].hidden = true;
+        divArray[index += 1].hidden = false;
       };
-      BackDiv.hidden = !divArray[Index - 1] ? true : false;
+      backDiv.hidden = !divArray[index - 1] ? true : false;
     });
 
-    BackIcon.classList = 'material-icons-outlined md-36 back';
-    BackIcon.textContent = 'arrow_back_ios';
-    BackDiv.hidden = true;
-    BackIcon.addEventListener('click', () => {
-      if (divArray[Index - 1]) {
-        if (!ValidationButton.hidden) {
-          ValidationButton.hidden = true;
-          NextDiv.hidden = false;
+    backIcon.classList = 'material-icons-outlined md-36 back';
+    backIcon.textContent = 'arrow_back_ios';
+    backDiv.hidden = true;
+    backIcon.addEventListener('click', () => {
+      if (divArray[index - 1]) {
+        if (!validationButton.hidden) {
+          validationButton.hidden = true;
+          nextDiv.hidden = false;
         };
-        divArray[Index].hidden = true;
-        divArray[Index -= 1].hidden = false;
+        divArray[index].hidden = true;
+        divArray[index -= 1].hidden = false;
       };
-      BackDiv.hidden = !divArray[Index - 1] ? true : false;
+      backDiv.hidden = !divArray[index - 1] ? true : false;
     });
 
-    NextDiv.append(NextIcon);
-    BackDiv.append(BackIcon);
+    nextDiv.append(nextIcon);
+    backDiv.append(backIcon);
 
-    Control.append(BackDiv, NextDiv);
+    control.append(backDiv, nextDiv);
 
-    document.querySelector("header").insertAdjacentElement('afterend', Control);
+    document.querySelector("header").insertAdjacentElement('afterend', control);
   } else {
     divArray.forEach(element => {
       element.classList.add('width-auto');
     });
   };
 
-  document.querySelector("header").insertAdjacentElement('afterend', Section);
+  document.querySelector("header").insertAdjacentElement('afterend', section);
   document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
-  ValidationButton.addEventListener('click', () => {
-    if (Permission() && ValidationButton.value != 'Enviar') {
+  validationButton.addEventListener('click', () => {
+    if (Permission() && validationButton.value != 'Enviar') {
       location.reload();
     } else if (Permission()) {
-      clearInterval(QuizTime);
+      clearInterval(quizTime);
 
-      ValidationButton.value = 'Reiniciar quiz';
+      validationButton.value = 'Reiniciar quiz';
 
-      var Interval = setInterval(Validation, 1000);
-      var BarProgress = document.createElement("progress");
-      var FirstBr = document.createElement("br");
-      var SecondBr = document.createElement("br");
+      let interval = setInterval(Validation, 1000);
+      let barProgress = document.createElement("progress");
+      let firstBr = document.createElement("br");
+      let secondBr = document.createElement("br");
 
-      BarProgress.value = 0;
-      BarProgress.max = 100;
+      barProgress.value = 0;
+      barProgress.max = 100;
 
-      document.querySelector("#final").append(FirstBr, SecondBr, BarProgress);
+      document.querySelector("#final").append(firstBr, secondBr, barProgress);
 
       function Validation() {
         counter++;
-        BarProgress.value += 20;
+        barProgress.value += 20;
         if (counter == 5) {
-          clearInterval(Interval);
+          clearInterval(interval);
 
-          [FirstBr, SecondBr, BarProgress].forEach(element => {
+          [firstBr, secondBr, barProgress].forEach(element => {
             element.remove();
           });
 
-          var ValueOfQuiz = 0, Hits = 0, title, points;
+          let valueOfQuiz = 0, hits = 0, title, points;
 
           for (let c = 0, len = document.querySelectorAll("input").length - 1; c < len; c++) {
-            var label = document.querySelectorAll("label")[c];
-            var input = document.querySelectorAll("input")[c];
+            let label = document.querySelectorAll("label")[c];
+            let input = document.querySelectorAll("input")[c];
 
             input.classList = 'cursor-default';
             input.disabled = true;
 
-            if (NumberOfInput == 0) {
-              NumberOfForms++;
-              title = document.querySelectorAll("h1")[NumberOfForms];
-              points = document.querySelector(`#q${NumberOfForms}`);
+            if (numberOfInput == 0) {
+              numberOfForms++;
+              title = document.querySelectorAll("h1")[numberOfForms];
+              points = document.querySelector(`#q${numberOfForms}`);
             };
 
-            NumberOfInput++;
+            numberOfInput++;
 
-            if (CorrectQuestions.indexOf(c) != -1) {
-              ValueOfQuiz += CorrectQuestionsValue[0];
+            if (correctQuestions.indexOf(c) != -1) {
+              valueOfQuiz += correctQuestionsValue[0];
 
               if (input.checked) {
-                total += CorrectQuestionsValue[0];
+                total += correctQuestionsValue[0];
                 title.classList = 'green';
-                points.textContent = `${CorrectQuestionsValue[0]}/${CorrectQuestionsValue[0]}`;
-                Hits++;
+                points.textContent = `${correctQuestionsValue[0]}/${correctQuestionsValue[0]}`;
+                hits++;
               };
               label.classList = 'green-background';
 
             } else if (input.checked) {
               title.classList = 'red';
               label.classList = 'red-background';
-              points.textContent = `0/${CorrectQuestionsValue[0]}`;
+              points.textContent = `0/${correctQuestionsValue[0]}`;
             };
 
-            if (NumberOfInput == NumberOfAllAlternatives[0]) {
-              NumberOfInput = 0;
-              [NumberOfAllAlternatives, CorrectQuestionsValue].forEach(element => {
+            if (numberOfInput == numberOfAllAlternatives[0]) {
+              numberOfInput = 0;
+              [numberOfAllAlternatives, correctQuestionsValue].forEach(element => {
                 element.splice(0, 1)
               });
             };
           };
 
-          var HitsElement = document.createElement("h1");
-          var Points = document.createElement("h1");
-          var Feedback = document.createElement("h1");
-          var TimeElement = document.createElement("h1");
+          let hitsElement = document.createElement("h1");
+          let pointsElement = document.createElement("h1");
+          let feedbackElement = document.createElement("h1");
+          let timeElement = document.createElement("h1");
 
-          if (Hours < 10) {
-            Hours = `0${Hours}`;
+          if (hours < 10) {
+            hours = `0${hours}`;
           };
-          if (Minutes < 10) {
-            Minutes = `0${Minutes}`;
+          if (minutes < 10) {
+            minutes = `0${minutes}`;
           };
-          if (Seconds < 10) {
-            Seconds = `0${Seconds}`;
+          if (seconds < 10) {
+            seconds = `0${seconds}`;
           };
 
-          TimeElement.id = 'time';
-          TimeElement.textContent = `Tempo: ${Hours}:${Minutes}:${Seconds}`;
-          HitsElement.textContent = `Acertos: ${Hits}/${CorrectQuestions.length} questões`;
-          Points.textContent = `Nota: ${total}/${ValueOfQuiz} pontos`;
+          timeElement.id = 'time';
+          timeElement.textContent = `Tempo: ${hours}:${minutes}:${seconds}`;
+          hitsElement.textContent = `Acertos: ${hits}/${correctQuestions.length} questões`;
+          pointsElement.textContent = `Nota: ${total}/${valueOfQuiz} pontos`;
 
-          total >= Math.floor(ValueOfQuiz / 2 + ValueOfQuiz / 10) ? (
-            Points.classList = HitsElement.classList = 'darkblue',
-            Feedback.textContent = 'Parabéns! Mandou bem!'
+          total >= Math.floor(valueOfQuiz / 2 + valueOfQuiz / 10) ? (
+            pointsElement.classList = hitsElement.classList = 'darkblue',
+            feedbackElement.textContent = 'Parabéns! Mandou bem!'
           ) : (
-            Points.classList = HitsElement.classList = 'red', 
-            Feedback.textContent = 'Não foi desta vez...'
+            pointsElement.classList = hitsElement.classList = 'red', 
+            feedbackElement.textContent = 'Não foi desta vez...'
           );
 
-          document.querySelector("#final").append(Points, HitsElement, TimeElement, Feedback);
+          document.querySelector("#final").append(pointsElement, hitsElement, timeElement, feedbackElement);
         };
       };
     };
@@ -294,13 +294,13 @@ request.onload = () => {
   };
 
   function Shuffle(array, variable) {
-    var RandomInt = 0;
+    let randomInt = 0;
     while (array.length < variable) {
-      RandomInt = Random(0, variable);
-      while (array.indexOf(RandomInt) != -1) {
-        RandomInt = Random(0, variable);
+      randomInt = Random(0, variable);
+      while (array.indexOf(randomInt) != -1) {
+        randomInt = Random(0, variable);
       };
-      array.push(RandomInt);
+      array.push(randomInt);
     };
   };
 };
