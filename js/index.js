@@ -9,6 +9,7 @@ request.responseType = 'json';
 request.send();
 request.onload = () => {
   const questions = request.response;
+
   let questionsLength = Object.keys(questions["quiz"]["questions"]).length;
   let questionsArray = [];
   let alternativesLength = 0;
