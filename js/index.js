@@ -34,7 +34,7 @@ request.onload = () => {
   document.querySelector("main").insertAdjacentElement('afterbegin', header);
   document.querySelector("meta[name='viewport']").after(titlePage);
 
-  Shuffle(questionsArray, questionsLength);
+  shuffle(questionsArray, questionsLength);
 
   for (let c = 0, length = questionsArray.length; c < length; c++) {
     let div = document.createElement("div");
@@ -54,7 +54,7 @@ request.onload = () => {
 
     alternativesLength = Object.keys(questions["quiz"]["questions"][`${questionsArray[c]}`]["alternatives"]).length;
 
-    Shuffle(alternativesArray, alternativesLength, true);
+    shuffle(alternativesArray, alternativesLength, true);
 
     numberOfAllAlternatives.push(alternativesLength);
 
@@ -171,14 +171,14 @@ request.onload = () => {
   document.querySelector("#final").hidden = document.querySelector("footer").hidden = false;
 
   validationButton.addEventListener('click', () => {
-    if (Permission() && validationButton.value != 'Enviar') {
+    if (permission() && validationButton.value != 'Enviar') {
       location.reload();
-    } else if (Permission()) {
+    } else if (permission()) {
       clearInterval(quizTime);
 
       validationButton.value = 'Reiniciar quiz';
 
-      let interval = setInterval(Validation, 1000);
+      let interval = setInterval(validation, 1000);
       let barProgress = document.createElement("progress");
       let firstBr = document.createElement("br");
       let secondBr = document.createElement("br");
@@ -188,7 +188,7 @@ request.onload = () => {
 
       document.querySelector("#final").append(firstBr, secondBr, barProgress);
 
-      function Validation() {
+      function validation() {
         counter++;
         barProgress.value += 20;
         if (counter == 5) {
@@ -274,7 +274,7 @@ request.onload = () => {
     };
   });
 
-  function Permission() {
+  function permission() {
     for (let c = 1, length = document.querySelectorAll("form").length + 1; c < length; c++) {
       for (let i = 0, len = document.querySelectorAll("form")[c - 1].length; i < len; i++) {
         if (document.querySelectorAll(`input[name='question${c}'`)[i].checked) {
@@ -289,16 +289,16 @@ request.onload = () => {
     return true;
   };
 
-  function Random(min, max) {
+  function random(min, max) {
     return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + Math.ceil(min);
   };
 
-  function Shuffle(array, variable) {
+  function shuffle(array, variable) {
     let randomInt = 0;
     while (array.length < variable) {
-      randomInt = Random(0, variable);
+      randomInt = random(0, variable);
       while (array.indexOf(randomInt) != -1) {
-        randomInt = Random(0, variable);
+        randomInt = random(0, variable);
       };
       array.push(randomInt);
     };
