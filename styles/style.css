@@ -25,6 +25,10 @@ body {
   margin: 14rem 0 3rem 0;
 }
 
+.box, a {
+  transition: all 0.4s;
+}
+
 .box {
   background: white;
   border-radius: 1rem;
@@ -33,7 +37,6 @@ body {
   margin-top: 6rem;
   padding: 1rem;
   line-height: 2rem;
-  transition: all 0.4s;
 }
 
 .box:hover {
