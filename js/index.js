@@ -167,7 +167,7 @@ request.onload = () => {
     backDiv.hidden = true;
     backIcon.addEventListener('click', () => {
       if (divArray[index - 1]) {
-        if (!validationButton.hidden) {
+        if (!divArray[index + 2]) {
           validationButton.hidden = true;
           nextDiv.hidden = false;
         }
