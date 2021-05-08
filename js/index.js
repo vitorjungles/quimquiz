@@ -1,4 +1,5 @@
 const year = document.createElement('span');
+
 const request = new XMLHttpRequest();
 
 year.textContent = ` ${new Date().getFullYear()}`;
@@ -305,8 +306,7 @@ request.onload = () => {
 
       const interval = setInterval(() => {
         barProgress.value += 20;
-        counter += 1;
-        if (counter === 5) {
+        if (barProgress.value === 100) {
           [firstBr, secondBr, barProgress].forEach((element) => {
             element.remove();
           });
