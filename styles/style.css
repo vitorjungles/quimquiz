@@ -75,7 +75,7 @@ form input:disabled:checked {
 label {
   word-break: break-word;
   border-radius: 0.4rem;
-  padding: 0 0 0 0.4rem;
+  padding-left: 0.4rem;
 }
 
 .green {
