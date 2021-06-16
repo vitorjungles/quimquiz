@@ -7,17 +7,16 @@
 ::-webkit-scrollbar {
   width: 0.6rem;
   height: 0.6rem;
-  margin-right: 10px;
   border-radius: 1rem;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(61, 60, 66);
+  background: rgb(61, 60, 66);
   border-radius: 1rem;
 }
 
 body {
-  background-color: rgba(37, 202, 125, 0.74);
+  background: rgba(37, 202, 125, 0.74);
   min-width: 260px;
 }
 
@@ -25,8 +24,8 @@ body {
   margin: 14rem 0 3rem 0;
 }
 
-.box, a {
-  transition: all 0.4s;
+.box, a, #validate, .material-icons-outlined.md-36 {
+  transition: all 0.3s;
 }
 
 .box {
@@ -106,7 +105,6 @@ label {
   position: absolute;
   top: 50%;
   font-size: 36px;
-  transition: all 0.3s;
   user-select: none;
   background: #FFFFFF1A;
   padding: 1rem;
@@ -130,7 +128,6 @@ label {
   padding: 1rem;
   opacity: 0.7;
   border: 0.2rem solid gray;
-  transition: all 0.3s;
   outline-style: none;
 }
 
