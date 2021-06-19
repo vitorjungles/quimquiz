@@ -1,7 +1,6 @@
 * {
   font-family: 'Poppins', sans-serif;
   color: black;
-  text-align: center;
 }
 
 ::-webkit-scrollbar {
@@ -15,12 +14,20 @@
   border-radius: 1rem;
 }
 
+header, #questions, #final, .footer-container {
+  display: flex;
+  justify-content: center;
+}
+
 body {
   background: rgba(37, 202, 125, 0.74);
   min-width: 260px;
 }
 
 #questions {
+  flex-direction: column;
+  align-items: center;
+  gap: 6rem;
   margin: 14rem 0 3rem 0;
 }
 
@@ -32,8 +39,6 @@ body {
   background: white;
   border-radius: 1rem;
   width: 50vw;
-  margin: auto;
-  margin-top: 6rem;
   padding: 1rem;
   line-height: 2rem;
 }
@@ -133,6 +138,7 @@ label {
 
 #validate:hover {
   opacity: 1.2;
+  transform: scale(1.1);
   border-color: black;
 }
 
@@ -170,7 +176,7 @@ a:hover, a:focus {
     background: none;
   }
 
-  .material-icons-outlined.md-36:hover, .box:hover {
+  .material-icons-outlined.md-36:hover, .box:hover, #validate:hover {
     transform: none;
   }
 
