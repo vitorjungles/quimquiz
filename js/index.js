@@ -5,7 +5,7 @@ const request = new XMLHttpRequest();
 year.textContent = ` ${new Date().getFullYear()}`;
 document.querySelector('#copyright').after(year);
 
-request.open('GET', './json/data.json');
+request.open('GET', './json/history.json');
 request.responseType = 'json';
 request.send();
 request.onload = () => {
@@ -274,7 +274,7 @@ request.onload = () => {
     hitsElement.textContent = `Acertos: ${hits}/${correctQuestions.length} questões`;
     pointsElement.textContent = `Nota: ${total}/${valueOfQuiz} pontos`;
 
-    if (total >= Math.floor(valueOfQuiz / 2 + valueOfQuiz / 10)) {
+    if (total >= Math.floor(valueOfQuiz / 100 * 70)) {
       pointsElement.classList = 'darkblue';
       hitsElement.classList = 'darkblue';
       feedbackElement.textContent = 'Parabéns! Mandou bem!';

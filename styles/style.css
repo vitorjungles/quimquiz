@@ -103,7 +103,9 @@ label {
 }
 
 #final {
-  margin: 1rem 0 10rem;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0 4rem;
 }
 
 .material-icons-outlined.md-36 {
@@ -134,16 +136,13 @@ label {
   opacity: 0.7;
   border: 0.2rem solid gray;
   outline-style: none;
+  margin-bottom: 2rem;
 }
 
 #validate:hover {
   opacity: 1.2;
   transform: scale(1.1);
   border-color: black;
-}
-
-#time {
-  margin-bottom: 6rem;
 }
 
 footer {

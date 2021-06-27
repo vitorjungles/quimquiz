@@ -1,0 +1,96 @@
+{
+  "quiz": {
+    "title": "HistoryQuiz",
+    "type": "one-question",
+    "questions": {
+      "0": {
+        "title": "O político da Roma Antiga que preocupou-se com o crescimento do proletariado urbano e com a distribuição de terras entre os cidadãos mais pobres foi:",
+        "alternatives": {
+          "0": "Caio Mário.",
+          "1": "Tibério Graco.",
+          "2": "Otávio.",
+          "3": "Pompeu."
+        },
+        "correct": 1,
+        "value": 2
+      },
+      "1": {
+        "title": "As Guerras Púnicas foram entre:",
+        "alternatives": {
+          "0": "Roma e Sagunto.",
+          "1": "Ticino e Marselha.",
+          "2": "Régio e Roma.",
+          "3": "Roma e Cartago."
+        },
+        "correct": 3,
+        "value": 2
+      },
+      "2": {
+        "title": "A política do Pão e do Circo se consistia em:",
+        "alternatives": {
+          "0": "alienar a população romana diante dos problemas sociais por meio da distribuição gratuita de alimentos e da promoção de eventos de entretenimento.",
+          "1": "promover a cultura.",
+          "2": "auxiliar a plebe.",
+          "3": "erradicar a fome."
+        },
+        "correct": 0,
+        "value": 2
+      },
+      "3": {
+        "title": "O primeiro Triunvirato de Roma foi composto por:",
+        "alternatives": {
+          "0": "Crasso, Pompeu e Marco Antônio.",
+          "1": "Júlio César, Crasso e Tibério Graco.",
+          "2": "Pompeu, Crasso e Júlio César.",
+          "3": "Júlio César, Otávio e Caio Graco."
+        },
+        "correct": 2,
+        "value": 2
+      },
+      "4": {
+        "title": "O tribuno da plebe que conseguiu a aprovação da Lei Frumentária e aplicou a reforma agrária em colônias como Cápua, Tarento, Cartago e Corinto foi:",
+        "alternatives": {
+          "0": "Tibério Graco.",
+          "1": "Caio Graco.",
+          "2": "Júlio César.",
+          "3": "Marco Antônio."
+        },
+        "correct": 1,
+        "value": 2
+      },
+      "5": {
+        "title": "O fundador do Império Romano foi:",
+        "alternatives": {
+          "0": "Otávio Augusto.",
+          "1": "Pompeu.",
+          "2": "Crasso.",
+          "3": "Lépido."
+        },
+        "correct": 0,
+        "value": 2
+      },
+      "6": {
+        "title": "Uma das conquistas legislativas dos plebeus foi:",
+        "alternatives": {
+          "0": "Lei Áurea.",
+          "1": "Lei do Talião.",
+          "2": "Lei das X Tábuas.",
+          "3": "Lei Hortênsia."
+        },
+        "correct": 3,
+        "value": 2
+      },
+      "7": {
+        "title": "Durante a República Romana, os responsáveis pelas finanças públicas eram:",
+        "alternatives": {
+          "0": "Censores.",
+          "1": "Questores.",
+          "2": "Edis.",
+          "3": "Pretores."
+        },
+        "correct": 1,
+        "value": 2
+      }
+    }
+  }
+}
