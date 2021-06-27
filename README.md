@@ -1,14 +1,14 @@
-<h1 align="center">QuímQuiz</h1>
+<h1 align="center">QuizWorld</h1>
 
 <p align="center"><img src="media/gifs/gif.gif" width="800" height="450"></p>
 
-## :pushpin: O que é o QuímQuiz?
+## :pushpin: O que é o QuizWorld?
 O QuímQuiz é um website divertido e educativo onde se encontrarão perguntas relacionadas à matéria escolar de Química.
 
-## :thinking: Qual o objetivo do QuímQuiz?
+## :thinking: Qual o objetivo do QuizWorld?
 O objetivo desse projeto é aproximar os estudos de Química aos usuários por meio de um quiz interativo.
 
-## :question: Como funciona o QuímQuiz?
+## :question: Como funciona o QuizWorld?
 O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totalizando assim 14 pontos sendo que de acordo com a nota final tirada o website se comportará de uma maneira diferente.
 
 ## :computer: Quais tecnologias são usadas?

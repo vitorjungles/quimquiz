@@ -1,0 +1,96 @@
+{
+  "quiz": {
+    "title": "HistoryQuiz",
+    "type": "one-question",
+    "questions": {
+      "0": {
+        "title": "Sabendo que a Tabela periódica atual contém as Famílias A (elementos representativos) e as Famílias B (elementos de transição), marque a alternativa que há somente elementos de transição:",
+        "alternatives": {
+          "0": "Li, Ag, B, Ar.",
+          "1": "Hg, Re, Ir, Ra.",
+          "2": "Ti, Pd, Zn, Au.",
+          "3": "C, O, N, F."
+        },
+        "correct": 2,
+        "value": 2
+      },
+      "1": {
+        "title": "O período da Tabela Periódica a qual um elemento químico pertence é igual ao seu:",
+        "alternatives": {
+          "0": "número de camadas eletrônicas.",
+          "1": "número de prótons.",
+          "2": "número de elétrons.",
+          "3": "número atômico."
+        },
+        "correct": 0,
+        "value": 2
+      },
+      "2": {
+        "title": "Dado o elemento químico Ni com número atômico igual a 28, marque a alternativa que contém a sua posição correta:",
+        "alternatives": {
+          "0": "2° Período e Família IIIA.",
+          "1": "5° Período e Família VB.",
+          "2": "7° Período e Família IA.",
+          "3": "4° Período e Família VIIIB."
+        },
+        "correct": 3,
+        "value": 2
+      },
+      "3": {
+        "title": "Com base nos conceitos da eletronegatividade, pode-se afirmar que na Tabela Periódica, ela:",
+        "alternatives": {
+          "0": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de baixo para cima.",
+          "1": "aumenta nos períodos da esquerda para a direita e aumenta nos grupos de baixo para cima.",
+          "2": "aumenta nos períodos da direita para a esquerda e aumenta nos grupos de cima para baixo.",
+          "3": "aumenta nos períodos da esquerda para a direita e aumenta nos grupos de cima para baixo."
+        },
+        "correct": 1,
+        "value": 2
+      },
+      "4": {
+        "title": "Dos elementos químicos abaixo, qual não faz parte de nenhuma família:",
+        "alternatives": {
+          "0": "Po.",
+          "1": "Ne.",
+          "2": "Cu.",
+          "3": "H."
+        },
+        "correct": 3,
+        "value": 2
+      },
+      "5": {
+        "title": "Marque a alternativa que há somente gases nobres:",
+        "alternatives": {
+          "0": "Fe, Nb, Ne, Ar.",
+          "1": "Ga, Os, S, P.",
+          "2": "Rn, Xe, Kr, He.",
+          "3": "Pb, Cs, U, Mn."
+        },
+        "correct": 2,
+        "value": 2
+      },
+      "6": {
+        "title": "Em relação ao raio atômico de um átomo, assinale a resposta mais adequada:",
+        "alternatives": {
+          "0": "Raio do Cátion < Raio do átomo neutro < Raio do Ânion.",
+          "1": "Raio do átomo neutro < Raio do Cátion < Raio do Ânion.",
+          "2": "Raio do Cátion < Raio do Ânion < Raio do átomo neutro.",
+          "3": "Raio do átomo neutro < Raio do Ânion < Raio do Cátion."
+        },
+        "correct": 0,
+        "value": 2
+      },
+      "7": {
+        "title": "Em relação ao raio atômico de um átomo, assinale a resposta mais adequada:",
+        "alternatives": {
+          "0": "Raio do Cátion < Raio do átomo neutro < Raio do Ânion.",
+          "1": "Raio do átomo neutro < Raio do Cátion < Raio do Ânion.",
+          "2": "Raio do Cátion < Raio do Ânion < Raio do átomo neutro.",
+          "3": "Raio do átomo neutro < Raio do Ânion < Raio do Cátion."
+        },
+        "correct": 0,
+        "value": 2
+      }
+    }
+  }
+}
