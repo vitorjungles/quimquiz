@@ -1,4 +1,4 @@
-<h1 align="center">QuímQuiz</h1>
+<h1 align="center">QuizWorld</h1>
 
 <p align="center"><img src="media/gifs/gif.gif" width="800" height="450"></p>
 
