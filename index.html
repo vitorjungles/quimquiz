@@ -4,26 +4,51 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, maximum-scale=5">
-  <meta name="description" content="Author: Vítor Jungles, Details: A dynamic chemistry quiz">
-  <link rel="stylesheet" href="styles/style.css">
+  <meta name="description" content="An interactive, educational and dynamic website that hosts several quizzes of various subjects.">
+  <link rel="stylesheet" href="styles/home.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="preload" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="preload" as="style">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" media="print" onload="this.media='all'">
 </head>
 <body>
-  <main>
-    <section id="final" hidden>
-      <input type="button" id="validate" value="Enviar">
-    </section>
-  </main>
-  <footer hidden>
-    <div class="footer-container">
-      <p>
-        <span id="copyright">&copy;</span> - Made by <a href="https://github.com/vitorjungles">Vítor Jungles</a>
-      </p>
+  <div class="content">
+    <div class="logo-box">
+      <h1 class="logo">QuizWorld</h1>
     </div>
-  </footer>
-  <script src="js/index.js"></script>
+    <div class="header">
+      <nav>
+        <ul>
+          <li>
+            <a href="">Ranking</a>
+          </li>
+          <li>
+            <a href="">Sobre</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  
+    <div id="image">
+      <h2>Teste seus conhecimentos.</h2>
+      <p>Aprenda. Interaja. Conquiste.</p>
+      <div class="ball top"></div>
+      <div class="ball bottom"></div>
+    </div>
+  
+    <main>
+      <div class="container">
+        <h2>Matérias disponíveis:</h2>
+        <section class="categories">
+          <ul>
+            <li>
+              <a href="">Química</a>
+            </li>
+            <li>
+              <a href="">História</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
 </body>
 </html>
