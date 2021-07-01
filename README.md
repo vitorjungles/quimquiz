@@ -1,21 +1,67 @@
-<h1 align="center">QuizWorld</h1>
+<div align="center">
+  <h1 align="center">QuizWorld</h1>
+  <br>
+  <img src="https://img.shields.io/github/repo-size/vitorjungles/quizworld" alt="Repo size badge" />
+  <img src="https://img.shields.io/github/stars/vitorjungles/quizworld" alt="Repo stars badge" />
+  <br>
+  <br>
+  <a href="#-sobre">Sobre</a> -
+  <a href="#-demo">Demo</a> -
+  <a href="#-rodando">Rodando</a> -
+  <a href="#gear-tecnologias">Tecnologias</a> -
+  <a href="#heavy_check_mark-contribua">Contribua</a> -
+  <a href="#-licença">Licença</a>
+  <br>
+  <br>
 
-<p align="center"><img src="media/gifs/gif.gif" width="800" height="450"></p>
+  <p>Made with :heart: by <a href="https://github.com/vitorjungles">Vítor Jungles</a></p>
+</div>
 
-## :pushpin: O que é o QuizWorld?
-O QuímQuiz é um website divertido e educativo onde se encontrarão perguntas relacionadas à matéria escolar de Química.
+## ❓ Sobre
 
-## :thinking: Qual o objetivo do QuizWorld?
-O objetivo desse projeto é aproximar os estudos de Química aos usuários por meio de um quiz interativo.
+O QuizWorld é um website divertido e educativo onde se encontrarão quizzes sobre diversas matérias escolares.
 
-## :question: Como funciona o QuizWorld?
-O QuímQuiz terá 7 perguntas sobre Química, cada uma valendo 2 pontos, totalizando assim 14 pontos sendo que de acordo com a nota final tirada o website se comportará de uma maneira diferente.
+## 💻 Demo
 
-## :computer: Quais tecnologias são usadas?
-As tecnologias utilizadas nesse projeto são: HTML5, CSS3 e JavaScript.
+Demonstração do funcionamento da aplicação QuizWorld.
 
-## :pencil: Licença
-Este projeto está sob a licença MIT. Leia o arquivo [LICENSE](https://github.com/vitorjungles/quimquiz/blob/master/LICENSE) para mais informações.
+## ⚡ Rodando
 
-## :arrow_right: Como acessar o QuímQuiz?
-Para testar seus conhecimentos no mundo da Química acesse [este site aqui](https://vitorjungles.github.io/quimquiz/). Boa sorte à todos os participantes. :four_leaf_clover:
+Clone o projeto e acesse a pasta.
+
+```
+$ git clone https://github.com/vitorjungles/quizworld.git
+$ cd rocket.q
+```
+
+Siga as etapas abaixo:
+
+```
+# Install the dependencies
+$ npm install
+
+# Start the database
+$ npm run init-db
+
+# Start the project
+$ npm start
+```
+
+## :gear: Tecnologias
+
+Esse projeto utiliza:
+- HTML
+- CSS
+- JavaScript
+- NodeJS
+- EJS
+- Express
+- SQLite
+
+## :heavy_check_mark: Contribua
+
+Para contribuir com o projeto, faça um fork desse repositório e mande suas modificações em um pull request.
+
+## 📝 Licença
+
+Projeto desenvolvido sob a licença MIT. Leia o arquivo [LICENSE](https://github.com/vitorjungles/quizworld/blob/master/LICENSE) para mais informações.
